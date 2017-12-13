@@ -214,7 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1700692157908842, guid: 90fb81d4b94c0fc41ba6ae7fac2639b1,
     type: 2}
---- !u!1001 &2097791361
+--- !u!1001 &1730550325
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
