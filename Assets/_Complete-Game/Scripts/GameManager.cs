@@ -53,7 +53,7 @@ namespace Completed
 			//Call the InitGame function to initialize the first level 
 			InitGame();
 		}
-
+        /*
         //this is called only once, and the paramter tell it to be called only after the scene was loaded
         //(otherwise, our Scene Load callback would be called the very first load, and we don't want that)
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
@@ -69,7 +69,7 @@ namespace Completed
             instance.level++;
             instance.InitGame();
         }
-
+        */
 		
 		//Initializes the game for each level.
 		void InitGame()

@@ -2,14 +2,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MovingObject {
 
+    public String name;
     public int playerDamage;
 
     private Animator animator;
     private Transform target;
     private bool skipMove;
+    public AudioClip enemyAttack1;
+    public AudioClip enemyAttack2;
+
 
 	// Use this for initialization
 	protected override void Start () {
@@ -52,5 +57,10 @@ public class Enemy : MovingObject {
         Player hitPlayer = component as Player;
         animator.SetTrigger("enemyAttack");
         hitPlayer.LoseFood(playerDamage);
+        SoundManager.instance.RandomizeSfx(enemyAttack1, enemyAttack2);
+    }
+    private void OnMouseEnter()
+    {
+        CanvasController.instance.setMouseEnterText(name);
     }
 }
