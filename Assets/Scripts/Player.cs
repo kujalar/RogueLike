@@ -5,7 +5,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Player : MovingObject {
+public class Player : MovingObject, ActorObject
+{
 
     public int wallDamage = 1;
     public int pointsPerFood = 10;
@@ -30,7 +31,12 @@ public class Player : MovingObject {
         foodText.text = "Food:" + food;
 
         base.Start();
-	}
+
+        //add our object to initiativetrack
+        GameManager.instance.initiativeTrack.Register(this);
+        //after our one and only player has entered.... start the round... all enemies should be on the scene already
+        GameManager.instance.initiativeTrack.StartRound();
+    }
 
     private void OnDisable()
     {
@@ -70,7 +76,10 @@ public class Player : MovingObject {
 
 
         CheckIfGameOver();
+        //this means player control is taken off - TODO this should be made local... now it is global and applies only to one player
         GameManager.instance.playersTurn = false;
+        //here we have moved, we must tell it to initiativeTrack TODO here is some bugs still, and remember there are bugs with the enemy script too.
+        GameManager.instance.initiativeTrack.NextTurn(this);
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -107,6 +116,20 @@ public class Player : MovingObject {
         //and not load all the scene object in the current scene.
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
     }
+
+    public int RollInitiative()
+    {
+        //this should be made random, but now i can test like this.
+        return 10;
+    }
+    public void StartTurn()
+    {
+        Debug.Log("Players turn start");
+        //TODO this is global, this should be changed
+        GameManager.instance.playersTurn = true;
+    }
+
+
     public void LoseFood(int loss)
     {
         animator.SetTrigger("playerHit");

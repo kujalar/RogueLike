@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Enemy : MovingObject {
+public class Enemy : MovingObject, ActorObject
+{
 
     public String name;
     public int playerDamage;
@@ -18,12 +19,27 @@ public class Enemy : MovingObject {
 
 	// Use this for initialization
 	protected override void Start () {
-        GameManager.instance.AddEnemyToList(this);
+        //GameManager.instance.AddEnemyToList(this);
+        //add our object to initiativetrack
+        GameManager.instance.initiativeTrack.Register(this);
+
         animator = GetComponent<Animator>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
         base.Start();
 	}
-	
+
+    public int RollInitiative()
+    {
+        //this should be made random, but now i can test like this.
+        return 6;
+    }
+    public void StartTurn()
+    {
+        //TODO here we should activate our move. It was done in GameManager, now we just say we should do it...
+        Debug.Log("Now moving "+name+" but is still under construction");
+        GameManager.instance.initiativeTrack.NextTurn(this);
+    }
+
 
     protected override void AttemptMove<T>(int xDir, int yDir)
     {

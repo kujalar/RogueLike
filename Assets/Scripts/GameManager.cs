@@ -12,16 +12,18 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance = null;
     public BoardManager boardScript;
     public int playerFoodPoints = 100;
-    [HideInInspector] public bool playersTurn = true;
+    [HideInInspector] public bool playersTurn = false;
 
     private Text levelText;
     private GameObject levelImage;
 
     private int level = 1;
-    private List<Enemy> enemies;
+ //   private List<Enemy> enemies;
     private bool enemiesMoving;
 
     private bool doingSetup;
+
+    [HideInInspector] public InitiativeTrack initiativeTrack = new InitiativeTrack();
 
 	// Use this for initialization
 	void Awake () {
@@ -34,7 +36,7 @@ public class GameManager : MonoBehaviour {
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
-        enemies = new List<Enemy>();
+     //   enemies = new List<Enemy>();
         boardScript = GetComponent<BoardManager>();
         InitGame();
 	}
@@ -67,9 +69,11 @@ public class GameManager : MonoBehaviour {
         levelImage.SetActive(true);
         //wait the delay and invoke method after that.
         Invoke("HideLevelImage", levelStartDelay);
-
-        enemies.Clear();
+        initiativeTrack.Clear();
+       // enemies.Clear();
+        //TODO we must get number of enemies, so that they can be added to the initiativeTrack
         boardScript.SetupScene(level);
+       
     }
     private void HideLevelImage()
     {
@@ -86,14 +90,19 @@ public class GameManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+        /*
         if (playersTurn || enemiesMoving || doingSetup)
         {
             return;
         }
 
         StartCoroutine(MoveEnemies());
+        */
 	}
 
+    //Enemies used to call this from Enemy.cs when Start
+
+    /*
     public void AddEnemyToList(Enemy script)
     {
         enemies.Add(script);
@@ -117,5 +126,6 @@ public class GameManager : MonoBehaviour {
         playersTurn = true;
         enemiesMoving = false;
     }
+    */
 
 }
