@@ -12,12 +12,12 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance = null;
     public BoardManager boardScript;
     public int playerFoodPoints = 100;
-    [HideInInspector] public bool playersTurn = false;
+  //  [HideInInspector] public bool playersTurn = false;
 
     private Text levelText;
     private GameObject levelImage;
 
-    private int level = 1;
+    private int level = 3;
  //   private List<Enemy> enemies;
     private bool enemiesMoving;
 

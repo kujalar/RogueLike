@@ -15,6 +15,11 @@ public class InitiativeTrack : MonoBehaviour {
         actors.Clear();
     }
 
+    public int Size()
+    {
+        return actors.Count;
+    }
+
     public void Register(ActorObject actor)
     {
         ActorsListItem listItem = new ActorsListItem();

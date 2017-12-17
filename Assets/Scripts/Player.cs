@@ -23,6 +23,11 @@ public class Player : MovingObject, ActorObject
 
     private Animator animator;
     private int food;
+
+    private bool playersTurn = false;
+    //when freeMove = true, the player is not in any InitiativeTrack, creature not on init list can move everytime when notBusy
+    //TODO freeMove could be checked, if player is on some initiativeTrack, then player should have no freeMove, do isFreeMove() boolean method!!!
+    private bool freeMove = true;
     
     // Use this for initialization
     protected override void Start () {
@@ -30,15 +35,28 @@ public class Player : MovingObject, ActorObject
         food = GameManager.instance.playerFoodPoints;
         
         foodText.text = "Food:" + food;
+        //initialiseFreeMove to true
+        freeMove = true;
 
         base.Start();
-
-        //add our object to initiativetrack
-        GameManager.instance.initiativeTrack.Register(this);
-        //after our one and only player has entered.... start the round... all enemies should be on the scene already
-        GameManager.instance.initiativeTrack.StartRound();
+        
     }
 
+    protected void StartFight()
+    {
+        Debug.Log("Start a Fight");
+        //to start a fight, add player to an initiativetrack
+        GameManager.instance.initiativeTrack.Register(this);
+        //disable players freeMove
+        freeMove = false;
+        //now there is only one way to start initiativeSystem.
+        GameManager.instance.initiativeTrack.StartRound();
+    }
+    protected void LeaveFight()
+    {
+        //TODO UnderConstruction.
+        //here we should switch back to freeMove and remove ourselves from the initiativeTrack.
+    }
     private void OnDisable()
     {
         GameManager.instance.playerFoodPoints = food;
@@ -46,7 +64,7 @@ public class Player : MovingObject, ActorObject
 
     // Update is called once per frame
     void Update () {
-        if (!GameManager.instance.playersTurn||this.isBusy) return;
+        if ((!freeMove && !playersTurn)||this.isBusy) return;
         int horizontal = 0;
         int vertical = 0;
         horizontal = (int)Input.GetAxisRaw("Horizontal");
@@ -56,9 +74,20 @@ public class Player : MovingObject, ActorObject
             //this prevents diagonical move
             vertical = 0;
         }
+
+
         if(horizontal != 0 || vertical != 0)
-        {
+        {   
+            //we have chosen some action, it means, after an action we check if fight begins
             AttemptMove<Wall>(horizontal, vertical);
+
+            //check fight conditions, now they are pretty straightforward. we just fight if there are enemies on the board.
+            //aim of this is, that unless there is a fight going on, the player can move freely as fast as his speed allows.
+            //when the fight is on, we change to a turn based system, where you act turnbased,move with allowances and do actions.
+            if (freeMove == true && GameManager.instance.initiativeTrack.Size() > 0)
+            {
+                StartFight();
+            } 
         }
 	}
 
@@ -78,11 +107,14 @@ public class Player : MovingObject, ActorObject
 
         CheckIfGameOver();
         //this means player control is taken off - TODO this should be made local... now it is global and applies only to one player
-        GameManager.instance.playersTurn = false;
+        playersTurn = false;
         //here we have moved, we must tell it to initiativeTrack.
         //TODO you might want to place some delay to passing initiative. Now all the objects will get their turn before 
         //turn passing objects smoothMovement script etc is ready. 
-        GameManager.instance.initiativeTrack.NextTurn(this);
+        if (!freeMove)
+        {
+            GameManager.instance.initiativeTrack.NextTurn(this);
+        }
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -129,7 +161,7 @@ public class Player : MovingObject, ActorObject
     {
         Debug.Log("Players turn start");
         //TODO this is global, this should be changed
-        GameManager.instance.playersTurn = true;
+        playersTurn = true;
     }
 
 
