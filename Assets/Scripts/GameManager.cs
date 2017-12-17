@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
 
     public float levelStartDelay = 2f;
-    public float turnDelay = .1f;
+    
 
     public static GameManager instance = null;
     public BoardManager boardScript;
@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour {
 
     private bool doingSetup;
 
-    [HideInInspector] public InitiativeTrack initiativeTrack = new InitiativeTrack();
+    [HideInInspector] public InitiativeTrack initiativeTrack;
 
 	// Use this for initialization
 	void Awake () {
@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
      //   enemies = new List<Enemy>();
         boardScript = GetComponent<BoardManager>();
+        initiativeTrack = GetComponent<InitiativeTrack>();
         InitGame();
 	}
 
@@ -73,6 +74,7 @@ public class GameManager : MonoBehaviour {
        // enemies.Clear();
         //TODO we must get number of enemies, so that they can be added to the initiativeTrack
         boardScript.SetupScene(level);
+
        
     }
     private void HideLevelImage()

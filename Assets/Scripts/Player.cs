@@ -23,11 +23,12 @@ public class Player : MovingObject, ActorObject
 
     private Animator animator;
     private int food;
-	// Use this for initialization
-	protected override void Start () {
+    
+    // Use this for initialization
+    protected override void Start () {
         animator = GetComponent<Animator>();
         food = GameManager.instance.playerFoodPoints;
-
+        
         foodText.text = "Food:" + food;
 
         base.Start();
@@ -45,7 +46,7 @@ public class Player : MovingObject, ActorObject
 
     // Update is called once per frame
     void Update () {
-        if (!GameManager.instance.playersTurn) return;
+        if (!GameManager.instance.playersTurn||this.isBusy) return;
         int horizontal = 0;
         int vertical = 0;
         horizontal = (int)Input.GetAxisRaw("Horizontal");
@@ -78,7 +79,9 @@ public class Player : MovingObject, ActorObject
         CheckIfGameOver();
         //this means player control is taken off - TODO this should be made local... now it is global and applies only to one player
         GameManager.instance.playersTurn = false;
-        //here we have moved, we must tell it to initiativeTrack TODO here is some bugs still, and remember there are bugs with the enemy script too.
+        //here we have moved, we must tell it to initiativeTrack.
+        //TODO you might want to place some delay to passing initiative. Now all the objects will get their turn before 
+        //turn passing objects smoothMovement script etc is ready. 
         GameManager.instance.initiativeTrack.NextTurn(this);
     }
     private void OnTriggerEnter2D(Collider2D other)

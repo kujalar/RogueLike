@@ -10,6 +10,8 @@ public abstract class MovingObject : MonoBehaviour {
     private Rigidbody2D rb2D;
     private float inverseMoveTime;
 
+    //this parameter tells if we are doing smoothMovement animation
+    protected bool isBusy = false;
 	// Use this for initialization
 	protected virtual void Start () {
         boxCollider = GetComponent<BoxCollider2D>();
@@ -38,6 +40,7 @@ public abstract class MovingObject : MonoBehaviour {
 
     protected IEnumerator SmoothMovement(Vector3 end)
     {
+        isBusy = true;
         float sqrRemainingDistance = (transform.position - end).sqrMagnitude;
         while(sqrRemainingDistance > float.Epsilon)
         {
@@ -46,6 +49,7 @@ public abstract class MovingObject : MonoBehaviour {
             sqrRemainingDistance = (transform.position - end).sqrMagnitude;
             yield return null;
         }
+        isBusy = false;
     }
 
     protected virtual void AttemptMove<T>(int xDir, int yDir)

@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InitiativeTrack { // : MonoBehaviour { I think this do not need to be MonoBehaviour script
-  //  private List<ActorsListItem> actors = new List<ActorsListItem>();
+public class InitiativeTrack : MonoBehaviour {
+    public float turnDelay = .1f;
+
+    //  private List<ActorsListItem> actors = new List<ActorsListItem>();
     private LinkedList<ActorsListItem> actors = new LinkedList<ActorsListItem>();
     LinkedListNode<ActorsListItem> currentNode = null;
 
@@ -47,7 +49,8 @@ public class InitiativeTrack { // : MonoBehaviour { I think this do not need to 
         Debug.Log("Start round");
         //TODO we could do some turn advancement logic here
         currentNode = actors.First;
-        currentNode.Value.actor.StartTurn();
+        //currentNode.Value.actor.StartTurn();
+        StartCoroutine(SignalStartTurn(currentNode.Value.actor));
     }
 
     public void NextTurn(ActorObject lastActor)
@@ -62,8 +65,14 @@ public class InitiativeTrack { // : MonoBehaviour { I think this do not need to 
         } else
         {
             //we can advance with next turn in initiative track
-            currentNode.Value.actor.StartTurn();
+            //currentNode.Value.actor.StartTurn();
+            StartCoroutine(SignalStartTurn(currentNode.Value.actor));
         }
+    }
+    protected IEnumerator SignalStartTurn(ActorObject actor)
+    {
+        yield return new WaitForSeconds(turnDelay);
+        actor.StartTurn();
     }
     /*
 	// Use this for initialization

@@ -16,12 +16,14 @@ public class Enemy : MovingObject, ActorObject
     public AudioClip enemyAttack1;
     public AudioClip enemyAttack2;
 
-
+    protected void Awake()
+    {
+        //add our object to initiativetrack
+        GameManager.instance.initiativeTrack.Register(this);
+    }
 	// Use this for initialization
 	protected override void Start () {
         //GameManager.instance.AddEnemyToList(this);
-        //add our object to initiativetrack
-        GameManager.instance.initiativeTrack.Register(this);
 
         animator = GetComponent<Animator>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -34,9 +36,10 @@ public class Enemy : MovingObject, ActorObject
         return 6;
     }
     public void StartTurn()
-    {
-        //TODO here we should activate our move. It was done in GameManager, now we just say we should do it...
-        Debug.Log("Now moving "+name+" but is still under construction");
+    { 
+        MoveEnemy();
+        //TODO you might want to place some delay to passing initiative. Now all the objects will get their turn before 
+        //turn passing objects smoothMovement script etc is ready.
         GameManager.instance.initiativeTrack.NextTurn(this);
     }
 
