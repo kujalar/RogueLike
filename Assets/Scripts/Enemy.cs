@@ -12,7 +12,7 @@ public class Enemy : MovingObject, ActorObject
 
     private Animator animator;
     private Transform target;
-    private bool skipMove;
+    private bool skipMove = false;
     public AudioClip enemyAttack1;
     public AudioClip enemyAttack2;
 
@@ -54,7 +54,8 @@ public class Enemy : MovingObject, ActorObject
 
         base.AttemptMove<T>(xDir, yDir);
 
-        skipMove = true;
+        //TODO remove and change this skip move, because with a new movement system this is obsolete way.
+        //skipMove = true;
     }
     public void MoveEnemy()
     {

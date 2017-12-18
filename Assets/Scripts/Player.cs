@@ -23,6 +23,7 @@ public class Player : MovingObject, ActorObject
 
     private Animator animator;
     private int food;
+    private CreatureStatistics statistics;
 
     private bool playersTurn = false;
     //when freeMove = true, the player is not in any InitiativeTrack, creature not on init list can move everytime when notBusy
@@ -39,7 +40,8 @@ public class Player : MovingObject, ActorObject
         freeMove = true;
 
         base.Start();
-        
+        //TODO some kind of statistics loading/factory
+        statistics = GetComponent<StatisticsData>();
     }
 
     protected void StartFight()
@@ -96,23 +98,45 @@ public class Player : MovingObject, ActorObject
         food--;
         foodText.text = "Food:" + food;
 
-        base.AttemptMove<T>(xDir, yDir);
+        //base.AttemptMove<T>(xDir, yDir);
         RaycastHit2D hit;
-        //now because we call Move Again it is actually called twice... FIX it when you have time
-        if(Move(xDir,yDir,out hit))
+
+        //speedometer is now used like in turnBased mode... 
+        //TODO you should make also freeMove mode where speedometer will not count current move, but instead it will count how fast player moves 1 block.
+        //TODO diagonal movement
+        //TODO difficult terrain
+        if(Move(xDir,yDir,statistics.GetSpeedometer(),out hit))
         {
             SoundManager.instance.RandomizeSfx(moveSound1, moveSound2);
+        } else if(hit.transform != null)
+        {
+            //we cannotMove and hit something with our move
+            //with player we are calling this method with T = Wall, so if we hit something with component wall we are gona dig it.
+            T hitComponent = hit.transform.GetComponent<T>();
+
+            if (hitComponent != null)
+            {
+                OnCantMove(hitComponent);
+            }
         }
 
 
+        bool endMyTurn = false;
+        //TODO now we end Players turn when his speedometer turns to 0. 
+        endMyTurn = statistics.GetSpeedometer().NoMoveLeft();
+        
+
         CheckIfGameOver();
-        //this means player control is taken off - TODO this should be made local... now it is global and applies only to one player
-        playersTurn = false;
+        
         //here we have moved, we must tell it to initiativeTrack.
         //TODO you might want to place some delay to passing initiative. Now all the objects will get their turn before 
         //turn passing objects smoothMovement script etc is ready. 
-        if (!freeMove)
+        if (!freeMove&&endMyTurn)
         {
+            Debug.Log("Players turn ends");
+            //this means player control is taken off
+            playersTurn = false;
+
             GameManager.instance.initiativeTrack.NextTurn(this);
         }
     }
@@ -160,7 +184,7 @@ public class Player : MovingObject, ActorObject
     public void StartTurn()
     {
         Debug.Log("Players turn start");
-        //TODO this is global, this should be changed
+        statistics.GetSpeedometer().reset();
         playersTurn = true;
     }
 
