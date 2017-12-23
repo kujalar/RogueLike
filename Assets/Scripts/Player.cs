@@ -30,6 +30,9 @@ public class Player : MovingObject, ActorObject
     //TODO freeMove could be checked, if player is on some initiativeTrack, then player should have no freeMove, do isFreeMove() boolean method!!!
     private bool freeMove = true;
     
+	//some booleans to determine if ui needs to be refreshed
+	public bool movePointsLeftDirty = true;
+
     // Use this for initialization
     protected override void Start () {
         animator = GetComponent<Animator>();
@@ -42,7 +45,10 @@ public class Player : MovingObject, ActorObject
         base.Start();
         //TODO some kind of statistics loading/factory
         statistics = GetComponent<StatisticsData>();
-    }
+
+		//TODO we should place the player, who is currentSelectedPlayer
+		GameManager.instance.setSelectedPlayer (this);
+	}
 
     protected void StartFight()
     {
@@ -93,6 +99,12 @@ public class Player : MovingObject, ActorObject
         }
 	}
 
+	public Speed getMovePointsLeft(){
+		SpeedType currentSpeedType = SpeedType.LAND;
+		Speed currentSpeed = statistics.GetSpeedometer ().GetSpeed (currentSpeedType);
+		return currentSpeed;
+	}
+
     protected override void AttemptMove<T>(int xDir, int yDir)
     {
         food--;
@@ -119,7 +131,10 @@ public class Player : MovingObject, ActorObject
                 OnCantMove(hitComponent);
             }
         }
-
+		if (!freeMove) {
+			//simple thing, ask to refresh moves left if we are not doing free move. During free move we should just show max move left.
+			movePointsLeftDirty = true;
+		}
 
         bool endMyTurn = false;
         //TODO now we end Players turn when his speedometer turns to 0. 
@@ -185,7 +200,9 @@ public class Player : MovingObject, ActorObject
     {
         Debug.Log("Players turn start");
         statistics.GetSpeedometer().reset();
+		movePointsLeftDirty = true;
         playersTurn = true;
+
     }
 
 

@@ -31,7 +31,7 @@ public abstract class MovingObject : MonoBehaviour {
         {
             weHaveEnoughSpeed = speedometer.PayMovementAllowance(5, SpeedType.LAND);
         }
-        Debug.Log("Heipparallaa");
+        //Debug.Log("Heipparallaa");
 
         boxCollider.enabled = false;
         hit = Physics2D.Linecast(start, end, blockingLayer);

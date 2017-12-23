@@ -31,6 +31,9 @@ public class Speedometer
     {
         speedArray[(int)speed.type] = speed;
     }
+	public Speed GetSpeed(SpeedType speedType){
+		return speedArray [(int)speedType];
+	}
     public bool PayMovementAllowance(int cost, SpeedType type)
     {
         Speed speed = speedArray[(int)type];
