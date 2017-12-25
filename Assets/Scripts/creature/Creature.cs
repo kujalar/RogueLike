@@ -2,6 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface CreatureStatistics {
+public interface Creature {
     Speedometer GetSpeedometer();
 }

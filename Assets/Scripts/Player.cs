@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Player : MovingObject, ActorObject
+public class Player : MovingObject, ActorObject, Creature
 {
 
     public int wallDamage = 1;
@@ -23,7 +23,9 @@ public class Player : MovingObject, ActorObject
 
     private Animator animator;
     private int food;
-    private CreatureStatistics statistics;
+	private StatisticsData statistics;
+	private Speedometer speedometer;
+	private Actionometer actionometer;
 
     private bool playersTurn = false;
     //when freeMove = true, the player is not in any InitiativeTrack, creature not on init list can move everytime when notBusy
@@ -33,6 +35,15 @@ public class Player : MovingObject, ActorObject
 	//some booleans to determine if ui needs to be refreshed
 	public bool movePointsLeftDirty = true;
 
+	public Speedometer GetSpeedometer(){
+		return speedometer;
+	}
+	public Actionometer GetActionometer(){
+		return actionometer;
+	}
+	protected void Awake(){
+		speedometer = new Speedometer ();
+	}
     // Use this for initialization
     protected override void Start () {
         animator = GetComponent<Animator>();
@@ -45,6 +56,11 @@ public class Player : MovingObject, ActorObject
         base.Start();
         //TODO some kind of statistics loading/factory
         statistics = GetComponent<StatisticsData>();
+		//init speedometer
+		speedometer.Add (statistics.GetSpeed ());
+		//init actionometer
+		actionometer = GetComponent<Actionometer>();
+		actionometer.init();
 
 		//TODO we should place the player, who is currentSelectedPlayer
 		GameManager.instance.setSelectedPlayer (this);
@@ -101,7 +117,7 @@ public class Player : MovingObject, ActorObject
 
 	public Speed getMovePointsLeft(){
 		SpeedType currentSpeedType = SpeedType.LAND;
-		Speed currentSpeed = statistics.GetSpeedometer ().GetSpeed (currentSpeedType);
+		Speed currentSpeed = speedometer.GetSpeed (currentSpeedType);
 		return currentSpeed;
 	}
 
@@ -117,7 +133,7 @@ public class Player : MovingObject, ActorObject
         //TODO you should make also freeMove mode where speedometer will not count current move, but instead it will count how fast player moves 1 block.
         //TODO diagonal movement
         //TODO difficult terrain
-        if(Move(xDir,yDir,statistics.GetSpeedometer(),out hit))
+        if(Move(xDir,yDir,speedometer,out hit))
         {
             SoundManager.instance.RandomizeSfx(moveSound1, moveSound2);
         } else if(hit.transform != null)
@@ -138,7 +154,7 @@ public class Player : MovingObject, ActorObject
 
         bool endMyTurn = false;
         //TODO now we end Players turn when his speedometer turns to 0. 
-        endMyTurn = statistics.GetSpeedometer().NoMoveLeft();
+		endMyTurn = speedometer.NoMoveLeft();
         
 
         CheckIfGameOver();
@@ -199,7 +215,7 @@ public class Player : MovingObject, ActorObject
     public void StartTurn()
     {
         Debug.Log("Players turn start");
-        statistics.GetSpeedometer().reset();
+        speedometer.reset();
 		movePointsLeftDirty = true;
         playersTurn = true;
 
