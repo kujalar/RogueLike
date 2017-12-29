@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ActionHolder : MonoBehaviour {
 	public Text actionText;
+	public Image actionImage;
 	// Use this for initialization
 	void Awaken () {
 	}
@@ -14,7 +15,12 @@ public class ActionHolder : MonoBehaviour {
 		
 	}
 
-	void setText(string text){
+	public void SetSymbolColor(Color color){
+		actionImage.color = color;
+		
+	}
+
+	public void SetText(string text){
 		actionText.text = text;
 	}
 }

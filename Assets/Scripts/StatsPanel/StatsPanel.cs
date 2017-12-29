@@ -21,9 +21,10 @@ public class StatsPanel : MonoBehaviour {
 		/*actionHolder = Instantiate (fab_ActionHolder) as GameObject; //, new Vector3(100f,100f, 0f), Quaternion.identity) as GameObject;
 		instance.transform.SetParent(gameObject.transform);
 		instance.transform.localPosition = new Vector3 (6f, firstActionRow, 0f);*/
-		actionHolder = initActionHolder (new Color(12,238,33));
-		bonusActionHolder = initActionHolder (new Color(84,7,244));
-		reactionHolder = initActionHolder (new Color (0,0,0));
+		ColorManager colorManager = ColorManager.instance;
+		actionHolder = initActionHolder (colorManager.actionColor);
+		bonusActionHolder = initActionHolder (colorManager.bonusActionColor);
+		reactionHolder = initActionHolder (colorManager.reactionColor);
 
 		moveText = moveTextObject.GetComponent<Text> ();
 		panelRows.Add (moveTextObject);
@@ -35,6 +36,8 @@ public class StatsPanel : MonoBehaviour {
 		GameObject instance = Instantiate (fab_ActionHolder) as GameObject;
 		instance.transform.SetParent (gameObject.transform);
 		instance.transform.localPosition = new Vector3 (6f, firstActionRow, 0f);
+		ActionHolder actionHolder = instance.GetComponent<ActionHolder> ();
+		actionHolder.SetSymbolColor (color);
 		panelRows.Add (instance);
 		return instance;
 	}

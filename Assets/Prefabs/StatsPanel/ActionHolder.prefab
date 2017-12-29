@@ -36,6 +36,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224941754901394044}
+  - component: {fileID: 114998029212892622}
   m_Layer: 5
   m_Name: ActionHolder
   m_TagString: Untagged
@@ -120,6 +121,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114998029212892622
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1669283488225258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4b8cadb8efbeb64aa7ce56dd03767e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionText: {fileID: 114222902087923470}
+  actionImage: {fileID: 114694241410188246}
 --- !u!222 &222672035618590324
 CanvasRenderer:
   m_ObjectHideFlags: 1
