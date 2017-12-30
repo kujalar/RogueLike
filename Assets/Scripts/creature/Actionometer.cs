@@ -59,25 +59,85 @@ public class Actionometer: MonoBehaviour {
 //this is a creatures option for an action. It might be used already in turn
 public class ActionOption {
 	public bool isUsed = false;
+	public bool isAction = true;
+	public bool isBonusAction = false;
+	public bool isReaction = false;
 	public Action action;
 }
 //this is an interface for the action business logic
 public interface Action {
 	ActionType GetActionType();//actions type with which it can be identified
+	string GetName();
 	void Execute(Player source);
 }
 
 public enum ActionType {
-	DODGE
+	EMPTY,
+	DODGE,
+	DASH,
+	ATTACK
 }
+public class EmptyAction : Action {
+	private ActionType type = ActionType.EMPTY;
+
+	public string GetName(){
+		return "";
+	}
+
+	public ActionType GetActionType(){
+		return type;
+	}
+	public void Execute(Player source){
+		//TODO make the logicx
+		Debug.Log ("UnderConstruction. Empty action.");
+	}
+}
+
 
 public class DodgeAction : Action {
 	private ActionType type = ActionType.DODGE;
+
+	public string GetName(){
+		return "Dodge";
+	}
+
 	public ActionType GetActionType(){
 		return type;
 	}
 	public void Execute(Player source){
 		//TODO make the logicx
 		Debug.Log ("UnderConstruction. Player is dodging.");
+	}
+}
+
+public class DashAction : Action {
+	private ActionType type = ActionType.DASH;
+
+	public string GetName(){
+		return "Dash";
+	}
+
+	public ActionType GetActionType(){
+		return type;
+	}
+	public void Execute(Player source){
+		//TODO make the logicx
+		Debug.Log ("UnderConstruction. Player is dashing.");
+	}
+}
+
+public class AttackAction : Action {
+	private ActionType type = ActionType.ATTACK;
+
+	public string GetName(){
+		return "Attack";
+	}
+
+	public ActionType GetActionType(){
+		return type;
+	}
+	public void Execute(Player source){
+		//TODO make the logicx
+		Debug.Log ("UnderConstruction. Player may attack.");
 	}
 }

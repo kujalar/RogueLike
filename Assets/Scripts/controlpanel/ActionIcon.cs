@@ -5,22 +5,29 @@ using UnityEngine.UI;
 
 public class ActionIcon : MonoBehaviour {
 
-	public string actionName;
+	//public string actionName;
+	public Actionometer actionometer;
+	public ActionOption actionOption;
 	public Text text;
+
+	public void Init(ActionOption actionOption,Actionometer actionometer){
+		this.actionometer = actionometer;
+		this.actionOption = actionOption;
+	}
+
 	// Use this for initialization
 	void Start () {
-		text.text = actionName;
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
 	}
 
 	public void SelectedAsAction(){
-		Debug.Log (actionName+" was selected as an action.");
+		actionometer.DoAction(actionOption);
 	}
 	public void SelectedAsBonusAction(){
-		Debug.Log (actionName + " was selected as a bonus action.");
+		actionometer.DoBonusAction (actionOption);
 	}
 }

@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a60d4234d0cec9b4c8035b01ac1ff10b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionName: Attack
+  actionometer: {fileID: 0}
   text: {fileID: 114666389427633856}
 --- !u!114 &114496939840778072
 MonoBehaviour:
@@ -467,7 +467,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 8, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 48, y: 48}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!224 &224194373806521798
