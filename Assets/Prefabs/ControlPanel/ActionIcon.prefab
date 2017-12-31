@@ -245,6 +245,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a60d4234d0cec9b4c8035b01ac1ff10b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actionButton: {fileID: 1682114133190130}
+  bonusActionButton: {fileID: 1008741408785140}
   actionometer: {fileID: 0}
   text: {fileID: 114666389427633856}
 --- !u!114 &114496939840778072
@@ -306,7 +308,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Attack
+  m_Text: 
 --- !u!114 &114714585754163082
 MonoBehaviour:
   m_ObjectHideFlags: 1

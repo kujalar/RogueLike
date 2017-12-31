@@ -41,6 +41,10 @@ public class Player : MovingObject, ActorObject, Creature
 	public Actionometer GetActionometer(){
 		return actionometer;
 	}
+	public StatisticsData GetStatistics(){
+		return statistics;
+	}
+
 	protected void Awake(){
 		speedometer = new Speedometer ();
 	}

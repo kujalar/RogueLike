@@ -20,17 +20,12 @@ public class StatisticsData : MonoBehaviour {
         speed.maxValue = 30;
         speed.currentValue = 30;
 
-		ActionOption attackOption = new ActionOption ();
-		attackOption.action = new AttackAction ();
-		actionOptions.Add (attackOption);
+		ActionOptionBuilder actionOptionBuilder = ActionOptionBuilder.GetInstance ().withAction (Actions.ATTACK);
+		actionOptions.Add (actionOptionBuilder.GetActionOption());
 
-		ActionOption dashOption = new ActionOption ();
-		attackOption.action = new DashAction ();
-		actionOptions.Add (dashOption);
+		actionOptions.Add (actionOptionBuilder.startNew().withAction(Actions.DASH).GetActionOption());
 
-		ActionOption dodgeOption = new ActionOption ();
-		attackOption.action = new DodgeAction ();
-		actionOptions.Add (dodgeOption);
+		actionOptions.Add (actionOptionBuilder.startNew().withAction(Actions.DODGE).GetActionOption());
     }
 
 	public Speed GetSpeed()

@@ -14,8 +14,6 @@ public class ControlPanel : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//instantiate one row of icons, with empty icons. do 5 icons
-		ActionOption emptyOption = new ActionOption();
-		emptyOption.action = new EmptyAction ();
 		for (int i = 0; i < 5; i++) {
 			instantiateNewActionIcon ();
 		}
@@ -27,7 +25,10 @@ public class ControlPanel : MonoBehaviour {
 		float colNumber = actionIcons.Count;
 		float x = firstActionCol + (colNumber * actionColWidth);
 		instance.transform.localPosition = new Vector3 (x, 0f, 0f);
+
 		ActionIcon actionIcon = instance.GetComponent<ActionIcon> ();
+		ActionOption emptyOption = ActionOptionBuilder.GetInstance ().withEmptyAction ().GetActionOption ();
+		actionIcon.Init (emptyOption,null);
 		actionIcons.Add (actionIcon);
 	}
 
@@ -41,6 +42,17 @@ public class ControlPanel : MonoBehaviour {
 	private void InitActionIconsWithOptions(){
 		//TODO when player changes, init ActionIcons with players actionometer
 
+		List<ActionOption> options = player.GetStatistics ().actionOptions;
+		Debug.Log("InitActionIconsWithOptions options.Count="+options.Count);
+		Actionometer actionometer = player.GetActionometer ();
+		for (int i = 0; i < options.Count; i++) {
+			ActionOption option = options [i];
+			if (i >= actionIcons.Count) {
+				Debug.LogError ("Player has too many options, you have not implemented paging for actionIcons. actionIcons.Count="+actionIcons.Count+" i="+i);
+			} else {
+				actionIcons [i].Init (option, actionometer);
+			}
+		}
 	}
 
 }

@@ -45,10 +45,11 @@ public class Actionometer: MonoBehaviour {
 			Debug.LogWarning ("No action left warning!");
 			return;
 		}
+
+		actionOption.action.Execute (player);
 		actionsLeft--;
 		//TODO different kind of actions might have different used option. Some are 3 / day and some might be still active and so on.
 		actionOption.isUsed = true;
-		actionOption.action.Execute (player);
 	}
 	//call this method when bonus action is chosen.
 	public void DoBonusAction(ActionOption actionOption){
@@ -59,7 +60,7 @@ public class Actionometer: MonoBehaviour {
 //this is a creatures option for an action. It might be used already in turn
 public class ActionOption {
 	public bool isUsed = false;
-	public bool isAction = true;
+	public bool isAction = false;
 	public bool isBonusAction = false;
 	public bool isReaction = false;
 	public Action action;
