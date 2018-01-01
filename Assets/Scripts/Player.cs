@@ -168,13 +168,15 @@ public class Player : MovingObject, ActorObject, Creature
         //turn passing objects smoothMovement script etc is ready. 
         if (!freeMove&&endMyTurn)
         {
-            Debug.Log("Players turn ends");
-            //this means player control is taken off
-            playersTurn = false;
-
-            GameManager.instance.initiativeTrack.NextTurn(this);
+			EndTurn ();
         }
     }
+	//call this when the player wants to end the turn.
+	public void EndTurn(){
+		Debug.Log("Players turn ends");
+		playersTurn = false;
+		GameManager.instance.initiativeTrack.NextTurn(this);
+	}
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "Exit")
