@@ -5,9 +5,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Player : MovingObject, ActorObject, Creature
+public class Player : MovingObject, ActorObject //, Creature
 {
-
     public int wallDamage = 1;
     public int pointsPerFood = 10;
     public int pointsPerSoda = 20;

@@ -1435,6 +1435,10 @@ Prefab:
       propertyPath: foodText
       value: 
       objectReference: {fileID: 621279732}
+    - target: {fileID: 1084058354187278, guid: 1081d008176ddaf4bbb4eac0acab1e15, type: 2}
+      propertyPath: m_Name
+      value: Creature
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1081d008176ddaf4bbb4eac0acab1e15, type: 2}
   m_IsPrefabParent: 0
