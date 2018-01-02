@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour {
         instance.level++;
         instance.InitGame();
     }
-	public void setSelectedPlayer(Creature creature){
+	public void setSelectedCreature(Creature creature){
 		selectedCreature = creature;
 	}
 	public Creature getSelectedCreature(){

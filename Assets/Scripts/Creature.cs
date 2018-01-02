@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class Creature : MovingObject, ActorObject //, Creature
 {
+	public GameObject controller;
     public int wallDamage = 1;
     public int pointsPerFood = 10;
     public int pointsPerSoda = 20;
@@ -66,15 +67,15 @@ public class Creature : MovingObject, ActorObject //, Creature
 		actionometer.init();
 
 		//TODO we should place the player, who is currentSelectedPlayer
-		GameManager.instance.setSelectedPlayer (this);
+		GameManager.instance.setSelectedCreature (this);
 	}
 
     protected void StartFight()
     {
         Debug.Log("Start a Fight");
-        //to start a fight, add player to an initiativetrack
+        //to start a fight, add creature to an initiativetrack
         GameManager.instance.initiativeTrack.Register(this);
-        //disable players freeMove
+        //disable creatures freeMove
         freeMove = false;
         //now there is only one way to start initiativeSystem.
         GameManager.instance.initiativeTrack.StartRound();
@@ -89,34 +90,26 @@ public class Creature : MovingObject, ActorObject //, Creature
         GameManager.instance.playerFoodPoints = food;
     }
 
-    // Update is called once per frame
-    void Update () {
-        if ((!freeMove && !playersTurn)||this.isBusy) return;
-        int horizontal = 0;
-        int vertical = 0;
-        horizontal = (int)Input.GetAxisRaw("Horizontal");
-        vertical = (int)Input.GetAxisRaw("Vertical");
-        if(horizontal != 0)
-        {
-            //this prevents diagonical move
-            vertical = 0;
-        }
-
-
-        if(horizontal != 0 || vertical != 0)
-        {   
-            //we have chosen some action, it means, after an action we check if fight begins
-            AttemptMove<Wall>(horizontal, vertical);
-
-            //check fight conditions, now they are pretty straightforward. we just fight if there are enemies on the board.
-            //aim of this is, that unless there is a fight going on, the player can move freely as fast as his speed allows.
-            //when the fight is on, we change to a turn based system, where you act turnbased,move with allowances and do actions.
-            if (freeMove == true && GameManager.instance.initiativeTrack.Size() > 0)
-            {
-                StartFight();
-            } 
-        }
+	public bool IsNoInitiative(){
+		if ((!freeMove && !playersTurn) || this.isBusy)
+			return true;
+		return false;
 	}
+
+	//this is used to command the Creature to Move one square
+	public void MoveCommand(int xDir, int yDir){
+		//we have chosen some action, it means, after an action we check if fight begins
+		AttemptMove<Wall>(xDir, yDir);
+
+		//check fight conditions, now they are pretty straightforward. we just fight if there are enemies on the board.
+		//aim of this is, that unless there is a fight going on, the player can move freely as fast as his speed allows.
+		//when the fight is on, we change to a turn based system, where you act turnbased,move with allowances and do actions.
+		if (freeMove == true && GameManager.instance.initiativeTrack.Size() > 0)
+		{
+			StartFight();
+		} 
+	}
+
 
 	public Speed getMovePointsLeft(){
 		SpeedType currentSpeedType = SpeedType.LAND;
@@ -156,7 +149,7 @@ public class Creature : MovingObject, ActorObject //, Creature
 		}
 
         bool endMyTurn = false;
-        //TODO now we end Players turn when his speedometer turns to 0. 
+        //TODO now we end Players turn when his speedometer turns to 0. this should be changed.
 		endMyTurn = speedometer.NoMoveLeft();
         
 
