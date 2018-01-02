@@ -62,19 +62,19 @@ public class StatsPanel : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		Player selectedPlayer = GameManager.instance.getSelectedPlayer (); 
+		Creature selectedCreature = GameManager.instance.getSelectedCreature (); 
 
-		UpdateMovePointsLeft (selectedPlayer);
+		UpdateMovePointsLeft (selectedCreature);
 		UpdateComponentPositioning ();
 	}
 
-	private void UpdateMovePointsLeft(Player selectedPlayer){
-		if (selectedPlayer == null) {
+	private void UpdateMovePointsLeft(Creature selectedCreature){
+		if (selectedCreature == null) {
 			return;
 		}
-		if (selectedPlayer.movePointsLeftDirty) {
-			selectedPlayer.movePointsLeftDirty = false;
-			Speed speed = selectedPlayer.getMovePointsLeft ();
+		if (selectedCreature.movePointsLeftDirty) {
+			selectedCreature.movePointsLeftDirty = false;
+			Speed speed = selectedCreature.getMovePointsLeft ();
 			moveText.text = "Move "+speed.currentValue+"("+speed.maxValue+")";
 		}
 	}

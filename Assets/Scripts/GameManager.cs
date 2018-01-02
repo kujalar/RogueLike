@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance = null;
     public BoardManager boardScript;
     public int playerFoodPoints = 100;
-	private Player selectedPlayer;
+	private Creature selectedCreature;
   //  [HideInInspector] public bool playersTurn = false;
 
     private Text levelText;
@@ -58,11 +58,11 @@ public class GameManager : MonoBehaviour {
         instance.level++;
         instance.InitGame();
     }
-	public void setSelectedPlayer(Player player){
-		selectedPlayer = player;
+	public void setSelectedPlayer(Creature creature){
+		selectedCreature = creature;
 	}
-	public Player getSelectedPlayer(){
-		return selectedPlayer;
+	public Creature getSelectedCreature(){
+		return selectedCreature;
 	}
     //here we are going to setup the level
     void InitGame()

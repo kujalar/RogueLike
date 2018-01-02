@@ -16,10 +16,10 @@ public class Actionometer: MonoBehaviour {
 	public List<ActionOption> legendaryActions = new List<ActionOption>();
 	public List<ActionOption> minorActions = new List<ActionOption>();
 
-	private Player player;
+	private Creature creature;
 
 	void Start () {
-		player = GetComponent<Player> ();
+		creature = GetComponent<Creature> ();
 	}
 
 
@@ -46,7 +46,7 @@ public class Actionometer: MonoBehaviour {
 			return;
 		}
 
-		actionOption.action.Execute (player);
+		actionOption.action.Execute (creature);
 		actionsLeft--;
 		//TODO different kind of actions might have different used option. Some are 3 / day and some might be still active and so on.
 		actionOption.isUsed = true;
@@ -69,7 +69,7 @@ public class ActionOption {
 public interface Action {
 	ActionType GetActionType();//actions type with which it can be identified
 	string GetName();
-	void Execute(Player source);
+	void Execute(Creature source);
 }
 
 public enum ActionType {
@@ -88,7 +88,7 @@ public class EmptyAction : Action {
 	public ActionType GetActionType(){
 		return type;
 	}
-	public void Execute(Player source){
+	public void Execute(Creature source){
 		//TODO make the logicx
 		Debug.Log ("UnderConstruction. Empty action.");
 	}
@@ -105,9 +105,9 @@ public class DodgeAction : Action {
 	public ActionType GetActionType(){
 		return type;
 	}
-	public void Execute(Player source){
+	public void Execute(Creature source){
 		//TODO make the logicx
-		Debug.Log ("UnderConstruction. Player is dodging.");
+		Debug.Log ("UnderConstruction. Creature is dodging.");
 	}
 }
 
@@ -121,9 +121,9 @@ public class DashAction : Action {
 	public ActionType GetActionType(){
 		return type;
 	}
-	public void Execute(Player source){
+	public void Execute(Creature source){
 		//TODO make the logicx
-		Debug.Log ("UnderConstruction. Player is dashing.");
+		Debug.Log ("UnderConstruction. Creature is dashing.");
 	}
 }
 
@@ -137,8 +137,8 @@ public class AttackAction : Action {
 	public ActionType GetActionType(){
 		return type;
 	}
-	public void Execute(Player source){
+	public void Execute(Creature source){
 		//TODO make the logicx
-		Debug.Log ("UnderConstruction. Player may attack.");
+		Debug.Log ("UnderConstruction. Creature may attack.");
 	}
 }

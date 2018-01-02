@@ -10,7 +10,7 @@ public class ControlPanel : MonoBehaviour {
 	private float actionColWidth = 56f;
 	List<ActionIcon> actionIcons = new List<ActionIcon> ();
 
-	private Player player;
+	private Creature creature;
 	// Use this for initialization
 	void Start () {
 		//instantiate one row of icons, with empty icons. do 5 icons
@@ -33,22 +33,22 @@ public class ControlPanel : MonoBehaviour {
 	}
 
 	void Update(){
-		Player selectedPlayer = GameManager.instance.getSelectedPlayer ();
-		if (player != selectedPlayer) {
-			player = selectedPlayer;
+		Creature selectedCreature = GameManager.instance.getSelectedCreature ();
+		if (creature != selectedCreature) {
+			creature = selectedCreature;
 			InitActionIconsWithOptions ();
 		}
 	}
 	private void InitActionIconsWithOptions(){
 		//TODO when player changes, init ActionIcons with players actionometer
 
-		List<ActionOption> options = player.GetStatistics ().actionOptions;
+		List<ActionOption> options = creature.GetStatistics ().actionOptions;
 		Debug.Log("InitActionIconsWithOptions options.Count="+options.Count);
-		Actionometer actionometer = player.GetActionometer ();
+		Actionometer actionometer = creature.GetActionometer ();
 		for (int i = 0; i < options.Count; i++) {
 			ActionOption option = options [i];
 			if (i >= actionIcons.Count) {
-				Debug.LogError ("Player has too many options, you have not implemented paging for actionIcons. actionIcons.Count="+actionIcons.Count+" i="+i);
+				Debug.LogError ("Creature has too many options, you have not implemented paging for actionIcons. actionIcons.Count="+actionIcons.Count+" i="+i);
 			} else {
 				actionIcons [i].Init (option, actionometer);
 			}

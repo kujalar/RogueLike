@@ -26,6 +26,7 @@ public class Enemy : MovingObject, ActorObject
         //GameManager.instance.AddEnemyToList(this);
 
         animator = GetComponent<Animator>();
+		//TODO there used to be only one Player - tagged Creature... this might get obsolete some day
         target = GameObject.FindGameObjectWithTag("Player").transform;
         base.Start();
 	}
@@ -69,14 +70,14 @@ public class Enemy : MovingObject, ActorObject
         { //otherwise move right or left
             xDir = target.position.x > transform.position.x ? 1 : -1;
         }
-        AttemptMove<Player>(xDir, yDir);
+        AttemptMove<Creature>(xDir, yDir);
     }
 
     protected override void OnCantMove<T>(T component)
     {
-        Player hitPlayer = component as Player;
+        Creature hitCreature = component as Creature;
         animator.SetTrigger("enemyAttack");
-        hitPlayer.LoseFood(playerDamage);
+		hitCreature.LoseFood(playerDamage);
         SoundManager.instance.RandomizeSfx(enemyAttack1, enemyAttack2);
     }
     private void OnMouseEnter()
