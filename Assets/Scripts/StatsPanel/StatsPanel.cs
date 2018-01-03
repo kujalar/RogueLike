@@ -39,6 +39,7 @@ public class StatsPanel : MonoBehaviour {
 		ActionHolder actionHolder = instance.GetComponent<ActionHolder> ();
 		actionHolder.SetSymbolColor (color);
 		panelRows.Add (instance);
+		instance.SetActive (false);
 		return instance;
 	}
 	
@@ -65,6 +66,7 @@ public class StatsPanel : MonoBehaviour {
 		Creature selectedCreature = GameManager.instance.getSelectedCreature (); 
 
 		UpdateMovePointsLeft (selectedCreature);
+		UpdateActions (selectedCreature);
 		UpdateComponentPositioning ();
 	}
 
@@ -77,6 +79,31 @@ public class StatsPanel : MonoBehaviour {
 			Speed speed = selectedCreature.getMovePointsLeft ();
 			moveText.text = "Move "+speed.currentValue+"("+speed.maxValue+")";
 		}
+	}
+	private void UpdateActions(Creature selectedCreature){
+		if (selectedCreature == null) {
+			return;
+		}
+		Actionometer actionometer = selectedCreature.GetActionometer ();
+		if(actionometer.usedAction.isDirty) {
+			actionometer.usedAction.isDirty = false;
+			updateActionHolder (actionometer.usedAction.getData(),actionHolder);
+		}
+		if (actionometer.usedBonusAction.isDirty) {
+			actionometer.usedBonusAction.isDirty = false;
+			updateActionHolder (actionometer.usedBonusAction.getData (),bonusActionHolder);
+		}
+		//TODO reactions and legendary actions
+	}
+	void updateActionHolder(Action action,GameObject holder){
+		if (action == null || ActionType.EMPTY.Equals (action.GetActionType ())) {
+			holder.SetActive (false);
+		} else {
+			ActionHolder ah = holder.GetComponent<ActionHolder> ();
+			ah.SetText (action.GetName());
+			holder.SetActive (true);
+		}
+		componentPositioningDirty = true;
 	}
 
 	private void UpdateComponentPositioning(){

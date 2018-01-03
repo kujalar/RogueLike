@@ -27,7 +27,7 @@ public class Creature : MovingObject, ActorObject //, Creature
 	private Speedometer speedometer;
 	private Actionometer actionometer;
 
-    private bool playersTurn = false;
+    private bool creaturesTurn = false;
     //when freeMove = true, the player is not in any InitiativeTrack, creature not on init list can move everytime when notBusy
     //TODO freeMove could be checked, if player is on some initiativeTrack, then player should have no freeMove, do isFreeMove() boolean method!!!
     private bool freeMove = true;
@@ -91,7 +91,7 @@ public class Creature : MovingObject, ActorObject //, Creature
     }
 
 	public bool IsNoInitiative(){
-		if ((!freeMove && !playersTurn) || this.isBusy)
+		if ((!freeMove && !creaturesTurn) || this.isBusy)
 			return true;
 		return false;
 	}
@@ -165,8 +165,8 @@ public class Creature : MovingObject, ActorObject //, Creature
     }
 	//call this when the player wants to end the turn.
 	public void EndTurn(){
-		Debug.Log("Players turn ends");
-		playersTurn = false;
+		Debug.Log("Creatures turn ends");
+		creaturesTurn = false;
 		GameManager.instance.initiativeTrack.NextTurn(this);
 	}
     private void OnTriggerEnter2D(Collider2D other)
@@ -212,10 +212,11 @@ public class Creature : MovingObject, ActorObject //, Creature
     }
     public void StartTurn()
     {
-        Debug.Log("Players turn start");
+        Debug.Log("Creatures turn starts");
         speedometer.reset();
+		actionometer.Reset ();
 		movePointsLeftDirty = true;
-        playersTurn = true;
+		creaturesTurn = true;
 
     }
 

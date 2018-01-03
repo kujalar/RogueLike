@@ -18,6 +18,13 @@ public class Actionometer: MonoBehaviour {
 
 	private Creature creature;
 
+	//these simple params hold the action that is used. Works because you can do only one action of each type.
+	//these are like a log to be displayed what was chosen on a current round.
+	public ObjectData<Action> usedAction = new ObjectData<Action>();
+	public ObjectData<Action> usedBonusAction = new ObjectData<Action>();
+	public ObjectData<Action> usedReaction= new ObjectData<Action>();
+	//TODO usedLegendaryActions.
+
 	void Start () {
 		creature = GetComponent<Creature> ();
 	}
@@ -38,22 +45,48 @@ public class Actionometer: MonoBehaviour {
 		legendaryActionsLeft = maxLegendaryActions;
 		reactionsLeft = 1;
 		minorActionsLeft = 1;
+		usedAction.setData (Actions.EMPTY);
+		usedBonusAction.setData (Actions.EMPTY);
+		usedReaction.setData (Actions.EMPTY);
+		//reset all action options
+		ResetActionOptions(actions);
+		ResetActionOptions(bonusActions);
+		ResetActionOptions(legendaryActions);
+		ResetActionOptions(minorActions);
+	}
+	void ResetActionOptions(List<ActionOption> actionOptions){
+		if (actionOptions == null)
+			return;
+		for (int i = 0; i < actionOptions.Count; i++) {
+			actionOptions [i].isUsed = false;
+		}
 	}
 	//call this method when action is chosen.
 	public void DoAction(ActionOption actionOption){
 		if (actionsLeft < 1 || actionOption.isUsed) {
-			Debug.LogWarning ("No action left warning!");
+			Debug.LogWarning ("No action left warning! actionsLeft="+actionsLeft+" actionOption.isUsed="+actionOption.isUsed);
 			return;
 		}
 
 		actionOption.action.Execute (creature);
 		actionsLeft--;
+		//this is set so that we may show what action was chosen
+		usedAction.setData(actionOption.action);
 		//TODO different kind of actions might have different used option. Some are 3 / day and some might be still active and so on.
 		actionOption.isUsed = true;
 	}
 	//call this method when bonus action is chosen.
 	public void DoBonusAction(ActionOption actionOption){
-		//TODO bonus actions still under ćonstruction
+		if (bonusActionsLeft < 1 || actionOption.isUsed) {
+			Debug.LogWarning ("No bonusAction left warning!");
+			return;
+		}
+		actionOption.action.Execute (creature);
+		bonusActionsLeft--;
+		//this is set so that we may show what bonus action was chosen
+		usedBonusAction.setData(actionOption.action);
+		//TODO different kind of bonusActions might have different used option. Some are 3 / day and some might be still active and so on.
+		actionOption.isUsed = true;
 	}
 	//TODO minorActions and Legendary actions and reactions which should have some trigger and implemented somewhere.
 }
