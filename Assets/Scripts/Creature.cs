@@ -215,6 +215,7 @@ public class Creature : MovingObject, ActorObject //, Creature
         Debug.Log("Creatures turn starts");
         speedometer.reset();
 		actionometer.Reset ();
+        statistics.onStartTurn();
 		movePointsLeftDirty = true;
 		creaturesTurn = true;
 

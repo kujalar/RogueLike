@@ -34,10 +34,13 @@ public class ControlPanel : MonoBehaviour {
 
 	void Update(){
 		Creature selectedCreature = GameManager.instance.getSelectedCreature ();
-		if (creature != selectedCreature) {
-			creature = selectedCreature;
-			InitActionIconsWithOptions ();
-		}
+
+        if (creature != selectedCreature||selectedCreature.GetActionometer().IsDirty)
+        {
+            selectedCreature.GetActionometer().IsDirty = false;
+            creature = selectedCreature;
+            InitActionIconsWithOptions();
+        }
 	}
 	private void InitActionIconsWithOptions(){
 		//TODO when player changes, init ActionIcons with players actionometer

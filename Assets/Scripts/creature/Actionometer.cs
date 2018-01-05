@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Actionometer: MonoBehaviour {
+    public bool IsDirty = true;
+
 	public int actionsLeft = 1;
 	public int maxBonusActions = 0;
 	public int bonusActionsLeft = 0;
@@ -10,13 +12,9 @@ public class Actionometer: MonoBehaviour {
 	public int legendaryActionsLeft = 0;
 	public int reactionsLeft = 1;
 	public int minorActionsLeft = 1;
+    
 
-	public List<ActionOption> actions = new List<ActionOption>();
-	public List<ActionOption> bonusActions = new List<ActionOption>();
-	public List<ActionOption> legendaryActions = new List<ActionOption>();
-	public List<ActionOption> minorActions = new List<ActionOption>();
-
-	private Creature creature;
+    private Creature creature;
 
 	//these simple params hold the action that is used. Works because you can do only one action of each type.
 	//these are like a log to be displayed what was chosen on a current round.
@@ -32,10 +30,7 @@ public class Actionometer: MonoBehaviour {
 
 	//TODO we might need builder, now we have a fast implementation here
 	public void init(){
-		ActionOption dodgeOption = new ActionOption ();
-		//TODO we should not make whole object for every player. Actions should be easy to build singleton. this is now quick and fast first sketch.
-		dodgeOption.action = new DodgeAction ();
-		actions.Add (dodgeOption);
+		//turha
 	}
 
 	// call this method when players turn starts. This will reset the action counters.
@@ -48,19 +43,10 @@ public class Actionometer: MonoBehaviour {
 		usedAction.setData (Actions.EMPTY);
 		usedBonusAction.setData (Actions.EMPTY);
 		usedReaction.setData (Actions.EMPTY);
-		//reset all action options
-		ResetActionOptions(actions);
-		ResetActionOptions(bonusActions);
-		ResetActionOptions(legendaryActions);
-		ResetActionOptions(minorActions);
+		
+        IsDirty = true;
 	}
-	void ResetActionOptions(List<ActionOption> actionOptions){
-		if (actionOptions == null)
-			return;
-		for (int i = 0; i < actionOptions.Count; i++) {
-			actionOptions [i].isUsed = false;
-		}
-	}
+	
 	//call this method when action is chosen.
 	public void DoAction(ActionOption actionOption){
 		if (actionsLeft < 1 || actionOption.isUsed) {
