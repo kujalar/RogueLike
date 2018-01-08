@@ -141,8 +141,10 @@ public class DashAction : Action {
 		return type;
 	}
 	public void Execute(Creature source){
-		//TODO make the logicx
-		Debug.Log ("UnderConstruction. Creature is dashing.");
+        source.GetSpeedometer().DoDash();
+        //TODO make this into event that signals dirtyness - perhaps.
+        source.movePointsLeftDirty = true;
+		Debug.Log (source.name+" is dashing.");
 	}
 }
 

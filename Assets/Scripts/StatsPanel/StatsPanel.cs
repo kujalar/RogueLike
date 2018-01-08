@@ -75,9 +75,15 @@ public class StatsPanel : MonoBehaviour {
 			return;
 		}
 		if (selectedCreature.movePointsLeftDirty) {
+            Debug.Log("draw moveText");
 			selectedCreature.movePointsLeftDirty = false;
 			Speed speed = selectedCreature.getMovePointsLeft ();
-			moveText.text = "Move "+speed.currentValue+"("+speed.maxValue+")";
+            string dashText = "";
+            if (speed.dashValue > 0)
+            {
+                dashText = "+" + speed.dashValue;
+            }
+			moveText.text = "Move "+speed.GetMoveLeft()+"("+speed.baseSpeed+dashText+")";
 		}
 	}
 	private void UpdateActions(Creature selectedCreature){

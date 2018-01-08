@@ -18,8 +18,10 @@ public class StatisticsData : MonoBehaviour {
 		//TODO factory to build Speed object
 		speed = new Speed();
 		speed.type = SpeedType.LAND;
-		speed.maxValue = 30;
+		speed.baseSpeed = 30;
 		speed.currentValue = 30;
+        speed.dashValue = 0;
+        speed.currentDashValue = 0;
 
         ActionOptionBuilder actionOptionBuilder = ActionOptionBuilder.GetInstance().withAction(Actions.ATTACK);
         actionOptions.Add(actionOptionBuilder.GetActionOption());
