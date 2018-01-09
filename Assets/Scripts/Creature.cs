@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class Creature : MovingObject, ActorObject //, Creature
+public class Creature : MovingObject, ActorObject, ISelectHandler //, Creature
 {
 	public GameObject controller;
     public int wallDamage = 1;
@@ -238,6 +239,12 @@ public class Creature : MovingObject, ActorObject //, Creature
             SoundManager.instance.musicSource.Stop();
             GameManager.instance.GameOver();
         }
+    }
+    
+    //Do this when the selectable UI object is selected.
+    public void OnSelect(BaseEventData eventData)
+    {
+        Debug.Log(this.gameObject.name + " was selected");
     }
 
     public void OnMouseOver()

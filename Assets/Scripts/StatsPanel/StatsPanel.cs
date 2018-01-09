@@ -93,11 +93,11 @@ public class StatsPanel : MonoBehaviour {
 		Actionometer actionometer = selectedCreature.GetActionometer ();
 		if(actionometer.usedAction.isDirty) {
 			actionometer.usedAction.isDirty = false;
-			updateActionHolder (actionometer.usedAction.getData(),actionHolder);
+			updateActionHolder (actionometer.usedAction.data,actionHolder);
 		}
 		if (actionometer.usedBonusAction.isDirty) {
 			actionometer.usedBonusAction.isDirty = false;
-			updateActionHolder (actionometer.usedBonusAction.getData (),bonusActionHolder);
+			updateActionHolder (actionometer.usedBonusAction.data,bonusActionHolder);
 		}
 		//TODO reactions and legendary actions
 	}

@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class ObjectData<T>  {
 
-	T data;
+    //use for quick reading, without checking dirtyness
+	public T data;
 	public bool isDirty = true;
 
+    //set with this, cause this will set Instance dirty
 	public void setData(T value){
 		data = value;
 		isDirty = true;
 	}
-	public T getData(){
-		return data;
+    //TODO make a method that tells if the data was dirty
+	public bool wasDirtyAndGetClean(out T value){
+        value = data;
+        bool output = isDirty;
+        isDirty = false;
+		return output;
 	}
 }

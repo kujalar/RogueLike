@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour {
 
@@ -12,7 +13,8 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance = null;
     public BoardManager boardScript;
     public int playerFoodPoints = 100;
-	private Creature selectedCreature;
+
+    private Creature selectedCreature;
   //  [HideInInspector] public bool playersTurn = false;
 
     private Text levelText;
@@ -59,6 +61,12 @@ public class GameManager : MonoBehaviour {
         instance.InitGame();
     }
 	public void setSelectedCreature(Creature creature){
+        //some experimenting with the EventSystem
+        GameObject esGO = GameObject.Find("EventSystem");
+        EventSystem es = esGO.GetComponent<EventSystem>();
+        //this will call OnSelected from the Creature that was selected and OnDeSelect from the one who was not... currently does nothing special
+        es.SetSelectedGameObject(creature.gameObject);
+        //this works for now on
 		selectedCreature = creature;
 	}
 	public Creature getSelectedCreature(){
@@ -81,7 +89,10 @@ public class GameManager : MonoBehaviour {
         //TODO we must get number of enemies, so that they can be added to the initiativeTrack
         boardScript.SetupScene(level);
 
-       
+        //Experimenting with this system... looks like I'm going to use ObjectData to store my stats that I wish to follow on UI Canvas
+        ObjectData<int> intData = new ObjectData<int>();
+        intData.setData(1);
+        Debug.Log("objectData = "+intData.data);
     }
     private void HideLevelImage()
     {
