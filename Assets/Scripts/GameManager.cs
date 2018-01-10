@@ -68,7 +68,9 @@ public class GameManager : MonoBehaviour {
         es.SetSelectedGameObject(creature.gameObject);
         //this works for now on
 		selectedCreature = creature;
-	}
+        //ask the display to show whole new guy
+        GameEvents.instance.FireRefreshSelectedCreature();
+    }
 	public Creature getSelectedCreature(){
 		return selectedCreature;
 	}

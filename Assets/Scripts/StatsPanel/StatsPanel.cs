@@ -31,6 +31,12 @@ public class StatsPanel : MonoBehaviour {
 
 		Debug.Log ("Start StatsPanel");
 		componentPositioningDirty = true;
+
+        GameEvents gameEvents = GameEvents.instance;
+        //join to listen events that tell us what part of UI should be redrawn
+        gameEvents.OnRefreshMovePointDisplay += UpdateMovePointDisplay;
+        gameEvents.OnRefreshSelectedCreatureDisplay += UpdateStatsPanel;
+        gameEvents.OnRefreshActionDisplay += UpdateActionDisplay;
 	}
 	private GameObject initActionHolder(Color color){
 		GameObject instance = Instantiate (fab_ActionHolder) as GameObject;
@@ -61,45 +67,53 @@ public class StatsPanel : MonoBehaviour {
 		reactionHolder.SetActive (true);
 	}
 
+    //UpdateAll
+    void UpdateStatsPanel()
+    {
+        UpdateMovePointDisplay();
+        UpdateActionDisplay();
+    }
+    void UpdateMovePointDisplay()
+    {
+        Creature selectedCreature = GameManager.instance.getSelectedCreature();
+        if (selectedCreature == null)
+        {
+            return;
+        }
+        
+        Debug.Log("draw moveText");
+        selectedCreature.movePointsLeftDirty = false;
+        Speed speed = selectedCreature.getMovePointsLeft();
+        string dashText = "";
+        if (speed.dashValue > 0)
+        {
+            dashText = "+" + speed.dashValue;
+        }
+        moveText.text = "Move " + speed.GetMoveLeft() + "(" + speed.baseSpeed + dashText + ")";
+    }
+
+
+
 	// Update is called once per frame
 	void Update () {
-		Creature selectedCreature = GameManager.instance.getSelectedCreature (); 
+		//Creature selectedCreature = GameManager.instance.getSelectedCreature (); 
 
-		UpdateMovePointsLeft (selectedCreature);
-		UpdateActions (selectedCreature);
-		UpdateComponentPositioning ();
+		//UpdateMovePointsLeft (selectedCreature);
+		//UpdateActions (selectedCreature);
+		//UpdateComponentPositioning ();
 	}
 
-	private void UpdateMovePointsLeft(Creature selectedCreature){
-		if (selectedCreature == null) {
-			return;
-		}
-		if (selectedCreature.movePointsLeftDirty) {
-            Debug.Log("draw moveText");
-			selectedCreature.movePointsLeftDirty = false;
-			Speed speed = selectedCreature.getMovePointsLeft ();
-            string dashText = "";
-            if (speed.dashValue > 0)
-            {
-                dashText = "+" + speed.dashValue;
-            }
-			moveText.text = "Move "+speed.GetMoveLeft()+"("+speed.baseSpeed+dashText+")";
-		}
-	}
-	private void UpdateActions(Creature selectedCreature){
-		if (selectedCreature == null) {
+	private void UpdateActionDisplay(){
+        Creature selectedCreature = GameManager.instance.getSelectedCreature();
+        if (selectedCreature == null) {
 			return;
 		}
 		Actionometer actionometer = selectedCreature.GetActionometer ();
-		if(actionometer.usedAction.isDirty) {
-			actionometer.usedAction.isDirty = false;
-			updateActionHolder (actionometer.usedAction.data,actionHolder);
-		}
-		if (actionometer.usedBonusAction.isDirty) {
-			actionometer.usedBonusAction.isDirty = false;
-			updateActionHolder (actionometer.usedBonusAction.data,bonusActionHolder);
-		}
-		//TODO reactions and legendary actions
+		
+		updateActionHolder (actionometer.usedAction.data,actionHolder);
+		updateActionHolder (actionometer.usedBonusAction.data,bonusActionHolder);
+
+        UpdateComponentPositioning();
 	}
 	void updateActionHolder(Action action,GameObject holder){
 		if (action == null || ActionType.EMPTY.Equals (action.GetActionType ())) {
@@ -112,13 +126,9 @@ public class StatsPanel : MonoBehaviour {
 		componentPositioningDirty = true;
 	}
 
-	private void UpdateComponentPositioning(){
-		if (!componentPositioningDirty) {
-			return;
-		}
-		Debug.Log ("UpdateComponentPositioning");
-		componentPositioningDirty = false;
+	void UpdateComponentPositioning(){
 
+		Debug.Log ("UpdateComponentPositioning");
 		float count = 0f;
 		for (int i = 0; i < panelRows.Count; i++) {
 			GameObject holder = panelRows [i];

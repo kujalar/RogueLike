@@ -28,6 +28,7 @@ public class Creature : MovingObject, ActorObject, ISelectHandler //, Creature
 	private Speedometer speedometer;
 	private Actionometer actionometer;
 
+    private GameEvents gameEvents;
     private bool creaturesTurn = false;
     //when freeMove = true, the player is not in any InitiativeTrack, creature not on init list can move everytime when notBusy
     //TODO freeMove could be checked, if player is on some initiativeTrack, then player should have no freeMove, do isFreeMove() boolean method!!!
@@ -67,8 +68,9 @@ public class Creature : MovingObject, ActorObject, ISelectHandler //, Creature
 		actionometer = GetComponent<Actionometer>();
 		actionometer.init();
 
-		//TODO we should place the player, who is currentSelectedPlayer
-		GameManager.instance.setSelectedCreature (this);
+        gameEvents = GameEvents.instance;
+        //TODO we should place the player, who is currentSelectedPlayer
+        GameManager.instance.setSelectedCreature (this);
 	}
 
     protected void StartFight()
@@ -146,8 +148,9 @@ public class Creature : MovingObject, ActorObject, ISelectHandler //, Creature
         }
 		if (!freeMove) {
 			//simple thing, ask to refresh moves left if we are not doing free move. During free move we should just show max move left.
-			movePointsLeftDirty = true;
-		}
+            gameEvents.FireRefreshMovePointDisplay(gameObject);
+
+        }
 
         bool endMyTurn = false;
         //TODO now we end Players turn when his speedometer turns to 0. this should be changed.
@@ -217,9 +220,8 @@ public class Creature : MovingObject, ActorObject, ISelectHandler //, Creature
         speedometer.reset();
 		actionometer.Reset ();
         statistics.onStartTurn();
-		movePointsLeftDirty = true;
 		creaturesTurn = true;
-
+        GameEvents.instance.FireRefreshSelectedCreature(this.gameObject);
     }
 
 

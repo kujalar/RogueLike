@@ -43,8 +43,7 @@ public class Actionometer: MonoBehaviour {
 		usedAction.setData (Actions.EMPTY);
 		usedBonusAction.setData (Actions.EMPTY);
 		usedReaction.setData (Actions.EMPTY);
-		
-        IsDirty = true;
+	
 	}
 	
 	//call this method when action is chosen.
@@ -60,6 +59,7 @@ public class Actionometer: MonoBehaviour {
 		usedAction.setData(actionOption.action);
 		//TODO different kind of actions might have different used option. Some are 3 / day and some might be still active and so on.
 		actionOption.isUsed = true;
+        GameEvents.instance.FireRefreshActionDisplay(creature.gameObject);
 	}
 	//call this method when bonus action is chosen.
 	public void DoBonusAction(ActionOption actionOption){
@@ -73,7 +73,8 @@ public class Actionometer: MonoBehaviour {
 		usedBonusAction.setData(actionOption.action);
 		//TODO different kind of bonusActions might have different used option. Some are 3 / day and some might be still active and so on.
 		actionOption.isUsed = true;
-	}
+        GameEvents.instance.FireRefreshActionDisplay(creature.gameObject);
+    }
 	//TODO minorActions and Legendary actions and reactions which should have some trigger and implemented somewhere.
 }
 //this is a creatures option for an action. It might be used already in turn
@@ -143,7 +144,7 @@ public class DashAction : Action {
 	public void Execute(Creature source){
         source.GetSpeedometer().DoDash();
         //TODO make this into event that signals dirtyness - perhaps.
-        source.movePointsLeftDirty = true;
+        GameEvents.instance.FireRefreshMovePointDisplay(source.gameObject);
 		Debug.Log (source.name+" is dashing.");
 	}
 }
