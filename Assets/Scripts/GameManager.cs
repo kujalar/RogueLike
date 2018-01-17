@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 public class GameManager : MonoBehaviour {
 
     public float levelStartDelay = 2f;
-    
+    public GameObject levelImage;
 
     public static GameManager instance = null;
     public BoardManager boardScript;
@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour {
   //  [HideInInspector] public bool playersTurn = false;
 
     private Text levelText;
-    private GameObject levelImage;
 
     private int level = 3;
  //   private List<Enemy> enemies;
@@ -80,10 +79,12 @@ public class GameManager : MonoBehaviour {
         doingSetup = true;
 
         //we find images like this, because they are instantiated on level load. cant put in editor.
-        levelImage = GameObject.Find("LevelImage");
+        //levelImage = GameObject.Find("LevelImage");
+        levelImage.SetActive(true);
         levelText = GameObject.Find("LevelText").GetComponent<Text>();
         levelText.text = "Day " + level;
-        levelImage.SetActive(true);
+        
+        
         //wait the delay and invoke method after that.
         Invoke("HideLevelImage", levelStartDelay);
         initiativeTrack.Clear();

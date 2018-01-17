@@ -17,4 +17,6 @@ public class CanvasController : MonoBehaviour {
     {
         mouseEnterText.text = text;
     }
+
+    
 }

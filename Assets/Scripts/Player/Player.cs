@@ -13,6 +13,7 @@ public class Player : MonoBehaviour {
 	void Update () {
 		ControlSelectedCreatureMovement ();
 	}
+    
 	private void ControlSelectedCreatureMovement(){
 		//we should control selectedCreature if it exists and is our players Creature and has active turn
 		Creature selectedCreature = GameManager.instance.getSelectedCreature ();
