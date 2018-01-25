@@ -1,0 +1,1153 @@
+fileFormatVersion: 2
+guid: f8e6b0d647a6e4f4cafc89cb0f7c3933
+timeCreated: 1516908871
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: SolidWall1Sheet_0
+    21300002: SolidWall1Sheet_1
+    21300004: SolidWall1Sheet_2
+    21300006: SolidWall1Sheet_3
+    21300008: SolidWall1Sheet_4
+    21300010: SolidWall1Sheet_5
+    21300012: SolidWall1Sheet_6
+    21300014: SolidWall1Sheet_7
+    21300016: SolidWall1Sheet_8
+    21300018: SolidWall1Sheet_9
+    21300020: SolidWall1Sheet_10
+    21300022: SolidWall1Sheet_11
+    21300024: SolidWall1Sheet_12
+    21300026: SolidWall1Sheet_13
+    21300028: SolidWall1Sheet_14
+    21300030: SolidWall1Sheet_15
+    21300032: SolidWall1Sheet_16
+    21300034: SolidWall1Sheet_17
+    21300036: SolidWall1Sheet_18
+    21300038: SolidWall1Sheet_19
+    21300040: SolidWall1Sheet_20
+    21300042: SolidWall1Sheet_21
+    21300044: SolidWall1Sheet_22
+    21300046: SolidWall1Sheet_23
+    21300048: SolidWall1Sheet_24
+    21300050: SolidWall1Sheet_25
+    21300052: SolidWall1Sheet_26
+    21300054: SolidWall1Sheet_27
+    21300056: SolidWall1Sheet_28
+    21300058: SolidWall1Sheet_29
+    21300060: SolidWall1Sheet_30
+    21300062: SolidWall1Sheet_31
+    21300064: SolidWall1Sheet_32
+    21300066: SolidWall1Sheet_33
+    21300068: SolidWall1Sheet_34
+    21300070: SolidWall1Sheet_35
+    21300072: SolidWall1Sheet_36
+    21300074: SolidWall1Sheet_37
+    21300076: SolidWall1Sheet_38
+    21300078: SolidWall1Sheet_39
+    21300080: SolidWall1Sheet_40
+    21300082: SolidWall1Sheet_41
+    21300084: SolidWall1Sheet_42
+    21300086: SolidWall1Sheet_43
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 64
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SolidWall1Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 672
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 672
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 672
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 672
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 672
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 672
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 576
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 576
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 576
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 576
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 576
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 576
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 480
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 480
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 480
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 480
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 480
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 480
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 384
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 384
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 384
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 384
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 384
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 288
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 288
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 288
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 288
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 288
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 288
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 192
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 192
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 192
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_34
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 192
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_35
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 192
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_37
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 96
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_38
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 96
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_39
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 96
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_41
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_42
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SolidWall1Sheet_43
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 80
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6, y: 0.333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline:
+    - - {x: -240, y: -341}
+      - {x: -240, y: -354}
+      - {x: -222, y: -354}
+      - {x: -220, y: -352}
+      - {x: -220, y: -343}
+      - {x: -222, y: -341}
+    - - {x: -108, y: -341}
+      - {x: -108, y: -354}
+      - {x: -94, y: -354}
+      - {x: -94, y: -341}
+    - - {x: -82, y: -341}
+      - {x: -82, y: -354}
+      - {x: -60, y: -354}
+      - {x: -60, y: -341}
+    - - {x: -28, y: -341}
+      - {x: -28, y: -354}
+      - {x: -14, y: -354}
+      - {x: -14, y: -341}
+    - - {x: -2, y: -341}
+      - {x: -2, y: -354}
+      - {x: 18, y: -354}
+      - {x: 20, y: -352}
+      - {x: 20, y: -343}
+      - {x: 18, y: -341}
+    - - {x: 52, y: -341}
+      - {x: 52, y: -354}
+      - {x: 66, y: -354}
+      - {x: 66, y: -341}
+    - - {x: -240, y: -244}
+      - {x: -240, y: -323}
+      - {x: -140, y: -323}
+      - {x: -140, y: -286}
+      - {x: -174, y: -244}
+    - - {x: -8, y: 194}
+      - {x: -11, y: 190}
+      - {x: -15, y: 197}
+      - {x: -30, y: 193}
+      - {x: -1, y: 251}
+      - {x: 148, y: 218}
+      - {x: 180, y: 251}
+      - {x: 180, y: 348}
+      - {x: 146, y: 384}
+      - {x: 71, y: 384}
+      - {x: 69, y: 382}
+      - {x: 66, y: 384}
+      - {x: -240, y: 384}
+      - {x: -240, y: 311}
+      - {x: -227, y: 284}
+      - {x: -240, y: 246}
+      - {x: -240, y: -36}
+      - {x: -222, y: -35}
+      - {x: -220, y: -33}
+      - {x: -173, y: -40}
+      - {x: -138, y: -34}
+      - {x: -138, y: 1}
+      - {x: -160, y: 17}
+      - {x: -163, y: 14}
+      - {x: -163, y: 11}
+      - {x: -174, y: 41}
+      - {x: -122, y: 46}
+      - {x: -115, y: -323}
+      - {x: -94, y: -323}
+      - {x: -47, y: -260}
+      - {x: 147, y: -77}
+      - {x: 101, y: 207}
+    - - {x: -26, y: -286}
+      - {x: -28, y: -288}
+      - {x: -28, y: -321}
+      - {x: -26, y: -323}
+      - {x: -16, y: -323}
+      - {x: -14, y: -321}
+      - {x: -14, y: -288}
+      - {x: -16, y: -286}
+    - - {x: -7, y: -286}
+      - {x: -9, y: -287}
+      - {x: -9, y: -298}
+      - {x: -2, y: -323}
+      - {x: 18, y: -323}
+      - {x: 20, y: -321}
+      - {x: 20, y: -288}
+      - {x: 18, y: -286}
+    - - {x: 71, y: -288}
+      - {x: 72, y: -291}
+      - {x: 80, y: -291}
+      - {x: 82, y: -289}
+      - {x: 81, y: -286}
+      - {x: 73, y: -286}
+    - - {x: -160, y: -245}
+      - {x: -162, y: -247}
+      - {x: -162, y: -256}
+      - {x: -160, y: -258}
+      - {x: -142, y: -258}
+      - {x: -140, y: -256}
+      - {x: -140, y: -247}
+      - {x: -142, y: -245}
+    - - {x: 54, y: -245}
+      - {x: 52, y: -247}
+      - {x: 52, y: -256}
+      - {x: 54, y: -258}
+      - {x: 64, y: -258}
+      - {x: 66, y: -256}
+      - {x: 66, y: -247}
+      - {x: 64, y: -245}
+    - - {x: -240, y: -148}
+      - {x: -240, y: -227}
+      - {x: -217, y: -227}
+      - {x: -158, y: -196}
+      - {x: -158, y: -180}
+      - {x: -174, y: -148}
+    - - {x: -26, y: -190}
+      - {x: -28, y: -192}
+      - {x: -28, y: -225}
+      - {x: -26, y: -227}
+      - {x: -16, y: -227}
+      - {x: -14, y: -225}
+      - {x: -14, y: -192}
+      - {x: -16, y: -190}
+    - - {x: -7, y: -190}
+      - {x: -9, y: -191}
+      - {x: -9, y: -202}
+      - {x: -2, y: -227}
+      - {x: 64, y: -227}
+      - {x: 66, y: -225}
+      - {x: 66, y: -192}
+      - {x: 64, y: -190}
+    - - {x: -26, y: -149}
+      - {x: -28, y: -151}
+      - {x: -28, y: -160}
+      - {x: -26, y: -162}
+      - {x: -16, y: -162}
+      - {x: -14, y: -160}
+      - {x: -14, y: -151}
+      - {x: -16, y: -149}
+    - - {x: -2, y: -149}
+      - {x: -2, y: -162}
+      - {x: 20, y: -162}
+      - {x: 20, y: -149}
+    - - {x: 134, y: -149}
+      - {x: 132, y: -151}
+      - {x: 132, y: -160}
+      - {x: 134, y: -162}
+      - {x: 144, y: -162}
+      - {x: 146, y: -160}
+      - {x: 146, y: -151}
+      - {x: 144, y: -149}
+    - - {x: 160, y: -149}
+      - {x: 158, y: -151}
+      - {x: 158, y: -160}
+      - {x: 160, y: -162}
+      - {x: 178, y: -162}
+      - {x: 180, y: -160}
+      - {x: 180, y: -151}
+      - {x: 178, y: -149}
+    - - {x: -240, y: -52}
+      - {x: -240, y: -83}
+      - {x: -201, y: -131}
+      - {x: -140, y: -131}
+      - {x: -140, y: -94}
+      - {x: -168, y: -52}
+    - - {x: 0, y: -94}
+      - {x: -2, y: -96}
+      - {x: -2, y: -129}
+      - {x: 0, y: -131}
+      - {x: 64, y: -131}
+      - {x: 66, y: -129}
+      - {x: 66, y: -96}
+      - {x: 64, y: -94}
+    - - {x: 80, y: -94}
+      - {x: 78, y: -96}
+      - {x: 78, y: -129}
+      - {x: 80, y: -131}
+      - {x: 98, y: -131}
+      - {x: 100, y: -129}
+      - {x: 100, y: -96}
+      - {x: 98, y: -94}
+    - - {x: 214, y: -94}
+      - {x: 212, y: -96}
+      - {x: 212, y: -129}
+      - {x: 214, y: -131}
+      - {x: 224, y: -131}
+      - {x: 226, y: -129}
+      - {x: 226, y: -96}
+      - {x: 224, y: -94}
+    - - {x: 151, y: -96}
+      - {x: 152, y: -99}
+      - {x: 160, y: -99}
+      - {x: 162, y: -97}
+      - {x: 161, y: -94}
+      - {x: 153, y: -94}
+    - - {x: 231, y: -96}
+      - {x: 232, y: -99}
+      - {x: 240, y: -99}
+      - {x: 240, y: -94}
+      - {x: 233, y: -94}
+    - - {x: -160, y: -53}
+      - {x: -162, y: -55}
+      - {x: -162, y: -64}
+      - {x: -160, y: -66}
+      - {x: -142, y: -66}
+      - {x: -140, y: -64}
+      - {x: -140, y: -55}
+      - {x: -142, y: -53}
+    - - {x: -26, y: -53}
+      - {x: -28, y: -55}
+      - {x: -28, y: -64}
+      - {x: -26, y: -66}
+      - {x: -16, y: -66}
+      - {x: -14, y: -64}
+      - {x: -14, y: -55}
+      - {x: -16, y: -53}
+    - - {x: 0, y: -53}
+      - {x: -2, y: -55}
+      - {x: -2, y: -64}
+      - {x: 0, y: -66}
+      - {x: 18, y: -66}
+      - {x: 20, y: -64}
+      - {x: 20, y: -55}
+      - {x: 18, y: -53}
+    - - {x: 54, y: -53}
+      - {x: 52, y: -55}
+      - {x: 52, y: -64}
+      - {x: 54, y: -66}
+      - {x: 64, y: -66}
+      - {x: 66, y: -64}
+      - {x: 66, y: -55}
+      - {x: 64, y: -53}
+    - - {x: 80, y: -53}
+      - {x: 78, y: -55}
+      - {x: 78, y: -64}
+      - {x: 80, y: -66}
+      - {x: 98, y: -66}
+      - {x: 100, y: -64}
+      - {x: 100, y: -55}
+      - {x: 98, y: -53}
+    - - {x: 134, y: -53}
+      - {x: 132, y: -55}
+      - {x: 132, y: -64}
+      - {x: 134, y: -66}
+      - {x: 144, y: -66}
+      - {x: 146, y: -64}
+      - {x: 146, y: -55}
+      - {x: 144, y: -53}
+    - - {x: 160, y: -53}
+      - {x: 158, y: -55}
+      - {x: 158, y: -64}
+      - {x: 160, y: -66}
+      - {x: 178, y: -66}
+      - {x: 180, y: -64}
+      - {x: 180, y: -55}
+      - {x: 178, y: -53}
+    - - {x: 153, y: 2}
+      - {x: 151, y: 1}
+      - {x: 151, y: -10}
+      - {x: 158, y: -35}
+      - {x: 178, y: -35}
+      - {x: 180, y: -33}
+      - {x: 180, y: 0}
+      - {x: 178, y: 2}
+    - - {x: 231, y: 0}
+      - {x: 232, y: -3}
+      - {x: 240, y: -3}
+      - {x: 240, y: 2}
+      - {x: 233, y: 2}
+    - - {x: -160, y: 43}
+      - {x: -162, y: 41}
+      - {x: -162, y: 32}
+      - {x: -160, y: 30}
+      - {x: -142, y: 30}
+      - {x: -140, y: 32}
+      - {x: -140, y: 41}
+      - {x: -142, y: 43}
+    - - {x: 54, y: 43}
+      - {x: 52, y: 41}
+      - {x: 52, y: 32}
+      - {x: 54, y: 30}
+      - {x: 64, y: 30}
+      - {x: 66, y: 32}
+      - {x: 66, y: 41}
+      - {x: 64, y: 43}
+    - - {x: 134, y: 43}
+      - {x: 132, y: 41}
+      - {x: 132, y: 32}
+      - {x: 134, y: 30}
+      - {x: 144, y: 30}
+      - {x: 146, y: 32}
+      - {x: 146, y: 41}
+      - {x: 144, y: 43}
+    - - {x: 214, y: 43}
+      - {x: 212, y: 41}
+      - {x: 212, y: 32}
+      - {x: 214, y: 30}
+      - {x: 224, y: 30}
+      - {x: 226, y: 32}
+      - {x: 226, y: 41}
+      - {x: 224, y: 43}
+    - - {x: 134, y: 98}
+      - {x: 132, y: 96}
+      - {x: 132, y: 63}
+      - {x: 134, y: 61}
+      - {x: 144, y: 61}
+      - {x: 146, y: 63}
+      - {x: 146, y: 96}
+      - {x: 144, y: 98}
+    - - {x: 71, y: 96}
+      - {x: 72, y: 93}
+      - {x: 80, y: 93}
+      - {x: 82, y: 95}
+      - {x: 81, y: 98}
+      - {x: 73, y: 98}
+    - - {x: 151, y: 96}
+      - {x: 152, y: 93}
+      - {x: 160, y: 93}
+      - {x: 162, y: 95}
+      - {x: 161, y: 98}
+      - {x: 153, y: 98}
+    - - {x: 231, y: 96}
+      - {x: 232, y: 93}
+      - {x: 240, y: 93}
+      - {x: 240, y: 98}
+      - {x: 233, y: 98}
+    - - {x: 160, y: 139}
+      - {x: 158, y: 137}
+      - {x: 158, y: 128}
+      - {x: 160, y: 126}
+      - {x: 178, y: 126}
+      - {x: 180, y: 128}
+      - {x: 180, y: 137}
+      - {x: 178, y: 139}
+    - - {x: 80, y: 194}
+      - {x: 78, y: 192}
+      - {x: 78, y: 159}
+      - {x: 80, y: 157}
+      - {x: 98, y: 157}
+      - {x: 100, y: 159}
+      - {x: 100, y: 192}
+      - {x: 98, y: 194}
+    - - {x: 134, y: 194}
+      - {x: 132, y: 192}
+      - {x: 132, y: 159}
+      - {x: 134, y: 157}
+      - {x: 144, y: 157}
+      - {x: 146, y: 159}
+      - {x: 146, y: 192}
+      - {x: 144, y: 194}
+    - - {x: 151, y: 192}
+      - {x: 152, y: 189}
+      - {x: 160, y: 189}
+      - {x: 162, y: 191}
+      - {x: 161, y: 194}
+      - {x: 153, y: 194}
+    - - {x: 231, y: 192}
+      - {x: 232, y: 189}
+      - {x: 240, y: 189}
+      - {x: 240, y: 194}
+      - {x: 233, y: 194}
+    - - {x: 80, y: 235}
+      - {x: 78, y: 233}
+      - {x: 78, y: 224}
+      - {x: 80, y: 222}
+      - {x: 98, y: 222}
+      - {x: 100, y: 224}
+      - {x: 100, y: 233}
+      - {x: 98, y: 235}
+    - - {x: 134, y: 235}
+      - {x: 132, y: 233}
+      - {x: 132, y: 224}
+      - {x: 134, y: 222}
+      - {x: 144, y: 222}
+      - {x: 146, y: 224}
+      - {x: 146, y: 233}
+      - {x: 144, y: 235}
+    - - {x: 231, y: 288}
+      - {x: 232, y: 285}
+      - {x: 240, y: 285}
+      - {x: 240, y: 290}
+      - {x: 233, y: 290}
+    - - {x: 212, y: 384}
+      - {x: 212, y: 351}
+      - {x: 214, y: 349}
+      - {x: 224, y: 349}
+      - {x: 226, y: 351}
+      - {x: 226, y: 384}
+    - - {x: 231, y: 384}
+      - {x: 232, y: 381}
+      - {x: 240, y: 381}
+      - {x: 240, y: 384}
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

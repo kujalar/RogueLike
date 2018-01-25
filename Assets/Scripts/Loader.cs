@@ -12,7 +12,7 @@ public class Loader : MonoBehaviour {
         {
             Instantiate(gameManager);
         }
-        
+        Debug.Log("Assign level image "+levelImage);
         GameManager.instance.levelImage = levelImage;
         
 	}
