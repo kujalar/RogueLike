@@ -104,11 +104,11 @@ public class SolidWall1Tile : Tile, RogueLikeTile {
         {
             tileData.sprite = wallSprites[4];
         }
-        else if (composition=="XXXXXXX_")
+        else if (composition == "XXXXXXX_")
         {
             tileData.sprite = wallSprites[5];
         }
-        else if (IsMatch(composition,"*XX_X*XX"))
+        else if (IsMatch(composition, "*XX_X*XX"))
         {
             tileData.sprite = wallSprites[6];
         }
@@ -171,6 +171,110 @@ public class SolidWall1Tile : Tile, RogueLikeTile {
         else if (IsMatch(composition, "*_*X__X*"))
         {
             tileData.sprite = wallSprites[21];
+        }
+        else if (IsMatch(composition, "XXXXX_X_"))
+        {
+            tileData.sprite = wallSprites[22];
+        }
+        else if (IsMatch(composition, "XXXXX_XX"))
+        {
+            tileData.sprite = wallSprites[23];
+        }
+        else if (IsMatch(composition, "*X__X*X_"))
+        {
+            tileData.sprite = wallSprites[24];
+        }
+        else if (IsMatch(composition, "_X_XX*_*"))
+        {
+            tileData.sprite = wallSprites[25];
+        }
+        else if (IsMatch(composition, "*_*XX_X_"))
+        {
+            tileData.sprite = wallSprites[26];
+        }
+        else if (IsMatch(composition, "_X*X__X*"))
+        {
+            tileData.sprite = wallSprites[27];
+        }
+        else if (IsMatch(composition, "_XXXX_XX"))
+        {
+            tileData.sprite = wallSprites[28];
+        }
+        else if (IsMatch(composition, "_X_XXXXX"))
+        {
+            tileData.sprite = wallSprites[29];
+        }
+        else if (IsMatch(composition, "*XX_X*X_"))
+        {
+            tileData.sprite = wallSprites[30];
+        }
+        else if (IsMatch(composition, "*X_XX*_*"))
+        {
+            tileData.sprite = wallSprites[31];
+        }
+        else if (IsMatch(composition, "*_*XX_XX"))
+        {
+            tileData.sprite = wallSprites[32];
+        }
+        else if (IsMatch(composition, "_X*X_XX*"))
+        {
+            tileData.sprite = wallSprites[33];
+        }
+        else if (IsMatch(composition, "XX_XX_XX"))
+        {
+            tileData.sprite = wallSprites[34];
+        }
+        else if (IsMatch(composition, "_XXXXXX_"))
+        {
+            tileData.sprite = wallSprites[35];
+        }
+        else if (IsMatch(composition, "*X__X*XX"))
+        {
+            tileData.sprite = wallSprites[36];
+        }
+        else if (IsMatch(composition, "_XXXX*_*"))
+        {
+            tileData.sprite = wallSprites[37];
+        }
+        else if (IsMatch(composition, "*_*XXXX_"))
+        {
+            tileData.sprite = wallSprites[38];
+        }
+        else if (IsMatch(composition, "XX*X__X*"))
+        {
+            tileData.sprite = wallSprites[39];
+        }
+        else if (IsMatch(composition, "*X*__*X*"))
+        {
+            tileData.sprite = wallSprites[40];
+        }
+        else if (IsMatch(composition, "*_*XX*_*"))
+        {
+            tileData.sprite = wallSprites[41];
+        }
+
+
+
+
+        else if (IsMatch(composition, "_X_XXXX_"))
+        {
+            tileData.sprite = wallSprites[42];
+        }
+        else if (IsMatch(composition, "*X_XX_X_"))
+        {
+            tileData.sprite = wallSprites[43];
+        }
+        else if (IsMatch(composition, "_XXXX_X_"))
+        {
+            tileData.sprite = wallSprites[44];
+        }
+        else if (IsMatch(composition, "_X_XX_XX"))
+        {
+            tileData.sprite = wallSprites[45];
+        }
+        else if (IsMatch(composition, "XXXXXXXX"))
+        {
+            tileData.sprite = wallSprites[46];
         }
 
         else
