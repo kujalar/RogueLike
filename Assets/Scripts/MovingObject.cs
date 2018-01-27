@@ -10,6 +10,7 @@ public abstract class MovingObject : MonoBehaviour {
     private Rigidbody2D rb2D;
     private float inverseMoveTime;
 
+
     //this parameter tells if we are doing smoothMovement animation
     protected bool isBusy = false;
 	// Use this for initialization
@@ -23,13 +24,22 @@ public abstract class MovingObject : MonoBehaviour {
     {
         Vector2 start = transform.position;
         Vector2 end = start + new Vector2(xDir, yDir);
+        float distance = Vector2.Distance(start, end);
 
+        bool weHaveEnoughSpeed = true;
+        //calculate move cost
+        //check the target wallmap
+        RogueLikeTile roguetile = GridScript.instance.wallMap.getTileFromWorld(new Vector3(end.x,end.y,0F));
+        int moveCost = TerrainChart.instance.GetCostToEnter(roguetile,distance,SpeedType.LAND);
         //if we have speedometer, we should take the terrain and reduce the speed as we now have no terrain
         //and we always move only 1 move we reduce the distance of one square and it means speed of 5
-        bool weHaveEnoughSpeed = true;
-        if (speedometer != null)
+        
+        if (speedometer != null && moveCost >= 0)
         {
-            weHaveEnoughSpeed = speedometer.PayMovementAllowance(5, SpeedType.LAND);
+            weHaveEnoughSpeed = speedometer.PayMovementAllowance(moveCost, SpeedType.LAND);
+        } else
+        {
+            weHaveEnoughSpeed = false;
         }
         //Debug.Log("Heipparallaa");
 

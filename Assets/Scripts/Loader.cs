@@ -14,7 +14,6 @@ public class Loader : MonoBehaviour {
         }
         Debug.Log("Assign level image "+levelImage);
         GameManager.instance.levelImage = levelImage;
-        
 	}
 
 }

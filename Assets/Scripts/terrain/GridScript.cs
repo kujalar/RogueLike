@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WallMap : MonoBehaviour {
+public class GridScript : MonoBehaviour {
 
-    public static WallMap instance;
+    public static GridScript instance;
+
+    public WallMap wallMap;
 
     private void Awake()
     {
