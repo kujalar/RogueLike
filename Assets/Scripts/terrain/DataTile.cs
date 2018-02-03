@@ -13,12 +13,13 @@ public class DataTile : Tile
     private Sprite preview;
     //wall data tells what wall code we have on each side of the tile. it is used to check if the tile can be entered.
     public string wallData = "        ";
+    public Vector3Int position;
     //this function is called every time we paint a tile into tilemap.
     public override void RefreshTile(Vector3Int position, ITilemap tilemap)
     {
         base.RefreshTile(position, tilemap);
     }
-    /// <summary>
+    /// <summary> 
     /// Changes the tiles sprite to the correct sprites based on the situation
     /// </summary>
     /// <param name="location">The location of this sprite</param>
@@ -56,65 +57,4 @@ public class DataTile : Tile
     }
 #endif
 
-}
-[CustomEditor(typeof(Creature))]
-public class DataTilemapEditor:Editor
-{
-    string code = "12345678";
-    
-    private Rect[] GetStatusRects(Vector2 position)
-    {
-        Rect[] rects = new Rect[8];
-        rects[0] = new Rect(position.x-0.45f, position.y-0.45f,0.2f,0.2f);
-        rects[1] = new Rect(position.x-0.45f, position.y-0.1f, 0.2f, 0.2f);
-        rects[2] = new Rect(position.x-0.45f, position.y+0.25f, 0.2f, 0.2f);
-        rects[3] = new Rect(position.x-0.1f, position.y-0.45f, 0.2f, 0.2f);
-        rects[4] = new Rect(position.x-0.1f, position.y+0.25f, 0.2f, 0.2f);
-        rects[5] = new Rect(position.x+0.25f, position.y-0.45f, 0.2f, 0.2f);
-        rects[6] = new Rect(position.x+0.25f, position.y-0.1f, 0.2f, 0.2f);
-        rects[7] = new Rect(position.x+0.25f, position.y+0.25f, 0.2f, 0.2f);
-        return rects;
-    }
-    
-
-    void OnSceneGUI()
-    {
-        
-        Creature dataTile = target as Creature;
-        Vector3 position = dataTile.gameObject.transform.position;
-        Handles.color = Color.white;
-        GUIStyle guiStyle = new GUIStyle();
-        guiStyle.fontSize = 24;
-        char code0 = code[0];
-        Vector3 pos0 = new Vector3(position.x+0.5f, position.y+0.5f, position.z);
-
-        Rect rect = new Rect(position.x-0.45f,position.y-0.45f,0.2f,0.2f);
-
-        Rect[] statusRects = GetStatusRects(new Vector2(position.x, position.y));
-        for (int i = 0; i < statusRects.Length; i++)
-        {
-            Handles.DrawSolidRectangleWithOutline(statusRects[i], Color.white, Color.yellow);
-        }
-
-
-    //    Handles.Label(pos0,code0.ToString(),guiStyle);
-    //    Handles.DrawLine(position,new Vector3(0,0,0));
-        /*
-        // get the chosen game object
-        DrawLine t = target as DrawLine;
-
-        if (t == null || t.GameObjects == null)
-            return;
-
-        // grab the center of the parent
-        Vector3 center = t.transform.position;
-
-        // iterate over game objects added to the array...
-        for (int i = 0; i < t.GameObjects.Length; i++)
-        {
-            // ... and draw a line between them
-            if (t.GameObjects[i] != null)
-                Handles.DrawLine(center, t.GameObjects[i].transform.position);
-        }*/
-    }
 }

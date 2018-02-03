@@ -7,7 +7,7 @@ public class GridScript : MonoBehaviour {
     public static GridScript instance;
 
     public WallMap wallMap;
-
+  
     private void Awake()
     {
         instance = this;

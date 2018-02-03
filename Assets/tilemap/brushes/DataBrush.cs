@@ -21,8 +21,19 @@ public class DataBrush : GridBrush
             return;
         }
         dataTile.setData(wallCode);
+        DataTilemap dataTilemap = brushTarget.GetComponent<DataTilemap>();
+
+        DataEntry dataEntry = dataTilemap.dataEntries[position.x, position.y];
+        if (dataEntry == null)
+        {
+            dataEntry = new DataEntry();
+            dataTilemap.dataEntries[position.x, position.y] = dataEntry;
+        }
+        dataEntry.code = wallCode;
         base.Paint(gridLayout, brushTarget, position);
         Debug.Log("CellCount=" + cellCount + " We would paint " + brushTarget.name + " with " + wallCode + " if we would gridLayout=" + gridLayout.name + " brushTarget=" + brushTarget.name);
+        //some testing
+        dataTilemap.boardData.Write(wallCode);
     }
 #if UNITY_EDITOR
         [MenuItem("Assets/Create/Brushes/Data Brush")]
