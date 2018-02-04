@@ -9,7 +9,7 @@ public class DataTilemap : MonoBehaviour {
     [HideInInspector]
     Tilemap tilemap;
     [SerializeField]
-    public DataEntry[,] dataEntries = new DataEntry[1000,1000];
+    //public DataEntry[,] dataEntries = new DataEntry[1000,1000];
     public BoardData boardData;
 	// Use this for initialization
 	void Start () {
@@ -73,7 +73,7 @@ public class DataTilemapEditor : Editor
             for (int y = 0; y < 10; y++)
             {
                 DataTile dataTile = tilemap.GetTile(new Vector3Int(x,y,0)) as DataTile;
-                DataEntry dataEntry = dataMap.dataEntries[x,y];
+                DataEntry dataEntry = dataMap.boardData.Read(x,y);//dataMap.dataEntries[x,y];
                 DrawDatatileSceneSymbols(new Vector2(x,y), dataEntry);
             }
         }

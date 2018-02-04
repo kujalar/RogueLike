@@ -14,26 +14,13 @@ public class DataBrush : GridBrush
     {
         //we will write only to the dataTileMap
         // this.SetTile(new Vector3Int(0, 0, 0), new DataTile());
-        DataTile dataTile = cells[0].tile as DataTile;
-        if (dataTile == null)
-        {
-            Debug.LogWarning("Please use DataTile while painting with Data brush! Now you did not.");
-            return;
-        }
-        dataTile.setData(wallCode);
+        
         DataTilemap dataTilemap = brushTarget.GetComponent<DataTilemap>();
 
-        DataEntry dataEntry = dataTilemap.dataEntries[position.x, position.y];
-        if (dataEntry == null)
-        {
-            dataEntry = new DataEntry();
-            dataTilemap.dataEntries[position.x, position.y] = dataEntry;
-        }
-        dataEntry.code = wallCode;
         base.Paint(gridLayout, brushTarget, position);
         Debug.Log("CellCount=" + cellCount + " We would paint " + brushTarget.name + " with " + wallCode + " if we would gridLayout=" + gridLayout.name + " brushTarget=" + brushTarget.name);
         //some testing
-        dataTilemap.boardData.Write(wallCode);
+        dataTilemap.boardData.Write(wallCode,position.x,position.y);
     }
 #if UNITY_EDITOR
         [MenuItem("Assets/Create/Brushes/Data Brush")]
