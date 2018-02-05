@@ -760,7 +760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b80c983848b207d4aa9afc49588037bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallMap: {fileID: 1942268468}
+  dataMap: {fileID: 2013621966}
 --- !u!1 &976391650 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1943090488404320, guid: 711cfd0c5e4743c4cacd074d3dc09fd1,
@@ -1028,21 +1028,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: febc13ba22f836344a12172c38a02c36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dimX: 4
+  dimY: 4
   sizeX: 4
   sizeY: 4
+  allocateOnChange: 0
   dataEntryArray:
+  - code: X______X
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: X______X
   - code: 
   - code: 
   - code: 
   - code: XXXXXXXX
   - code: 
-  - code: 
-  - code: XXXXXXXX
-  - code: XXXXXXXX
-  - code: 
-  - code: 
-  - code: XXXXXXXX
-  - code: XXXXXXXX
   - code: 
   - code: 
   - code: 

@@ -4,23 +4,30 @@ using UnityEngine;
 using UnityEditor;
 
 public class BoardData : MonoBehaviour {
+    public int dimX;
+    public int dimY;
     public int sizeX;
     public int sizeY;
-    [SerializeField]
-    public DataEntry[,] dataEntries; //= new DataEntry[0,0];
+    public bool allocateOnChange = false;
     [SerializeField]
     public DataEntry[] dataEntryArray;
 
     public void initDatastore()
     {
         //this is now initiated to start from zero and continue to maxX or maxY
-        int dimX = GetAllocatedX();
-        int dimY = GetAllocatedY();
-        if (sizeX != dimX || sizeY != dimY)
+
+        //do not allocate if the size would be zero or less than zero
+        if (sizeX <= 0 || sizeY <= 0)
+        {
+            Debug.LogWarning("Cannot allocate dataentries with dimensions less than zero. X="+sizeX+" Y="+sizeY);
+            return;
+        }
+        if ((sizeX != GetAllocatedX() || sizeY != GetAllocatedY())&&allocateOnChange)
         {
             Debug.Log("Allocating new DataEntries for size "+sizeX+"x"+sizeY);
-            dataEntries = new DataEntry[sizeX, sizeY];
             dataEntryArray = new DataEntry[sizeX * sizeY];
+            dimX = sizeX;
+            dimY = sizeY;
         }
     }
     public int GetAllocatedX()
@@ -29,7 +36,7 @@ public class BoardData : MonoBehaviour {
         {
             return 0;
         }
-        return sizeX;//dataEntries.GetLength(0);
+        return dimX;//dataEntries.GetLength(0);
     }
     public int GetAllocatedY()
     {
@@ -37,7 +44,7 @@ public class BoardData : MonoBehaviour {
         {
             return 0;
         }
-        return sizeY;// dataEntries.GetLength(1);
+        return dimY;// dataEntries.GetLength(1);
     }
 
     private bool IsOutOfBounds(int x, int y)
@@ -54,7 +61,7 @@ public class BoardData : MonoBehaviour {
             Debug.LogError("Out of bounds Error while writing to ("+x+","+y+"). Cannot write.");
             return;
         }
-        int dataIndex = sizeX * y + x;
+        int dataIndex = dimX * y + x;
         if (code == null)
         {
             //code null means erase the data from a position
@@ -75,7 +82,7 @@ public class BoardData : MonoBehaviour {
         {
             return null;
         }
-        int dataIndex = sizeX * y + x;
+        int dataIndex = dimX * y + x;
         return dataEntryArray[dataIndex];
     }
 }
@@ -92,11 +99,13 @@ public class BoardDataEditor: Editor
 {
     SerializedProperty sizeX;
     SerializedProperty sizeY;
+    SerializedProperty allocateOnChange;
 
     void OnEnable()
     {
         sizeX = serializedObject.FindProperty("sizeX");
         sizeY = serializedObject.FindProperty("sizeY");
+        allocateOnChange = serializedObject.FindProperty("allocateOnChange");
     }
 
     public override void OnInspectorGUI()
@@ -118,7 +127,7 @@ public class BoardDataEditor: Editor
         EditorGUILayout.LabelField(label);
         EditorGUILayout.PropertyField(sizeX);
         EditorGUILayout.PropertyField(sizeY);
-        
+        EditorGUILayout.PropertyField(allocateOnChange);
         serializedObject.ApplyModifiedProperties();
 
         boardData.initDatastore();

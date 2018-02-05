@@ -30,12 +30,14 @@ public abstract class MovingObject : MonoBehaviour {
         //calculate move cost
         //check the target wallmap
         //TODO here we could change what kind of systems work, now I make just a statement to delete what is not implemented in scene.
-        RogueLikeTile roguetile = null;
+        //RogueLikeTile roguetile = null;
+        DataEntry data = null;
         if (GridScript.instance != null)
         {
-            roguetile = GridScript.instance.wallMap.getTileFromWorld(new Vector3(end.x, end.y, 0F));
+            //roguetile = GridScript.instance.wallMap.getTileFromWorld(new Vector3(end.x, end.y, 0F));
+            data = GridScript.instance.GetDataFromWorld(new Vector3(end.x, end.y, 0F));
         }
-        int moveCost = TerrainChart.instance.GetCostToEnter(roguetile,distance,SpeedType.LAND);
+        int moveCost = TerrainChart.instance.GetCostToEnter(data,xDir,yDir,distance,SpeedType.LAND);
         //if we have speedometer, we should take the terrain and reduce the speed as we now have no terrain
         //and we always move only 1 move we reduce the distance of one square and it means speed of 5
         

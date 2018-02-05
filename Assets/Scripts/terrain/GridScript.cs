@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class GridScript : MonoBehaviour {
 
     public static GridScript instance;
 
-    public WallMap wallMap;
+    public DataTilemap dataMap;
   
     private void Awake()
     {
@@ -21,4 +22,9 @@ public class GridScript : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public DataEntry GetDataFromWorld(Vector3 worldPoint)
+    {
+        return dataMap.GetDataEntryFromWorld(worldPoint);
+    }
 }

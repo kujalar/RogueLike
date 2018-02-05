@@ -28,6 +28,11 @@ public class DataTilemap : MonoBehaviour {
         }
         return dataTile;
     }
+    public DataEntry GetDataEntryFromWorld(Vector3 worldPoint)
+    {
+        Vector3Int cell = tilemap.WorldToCell(worldPoint);
+        return boardData.Read(cell.x,cell.y);
+    }
     public BoundsInt getVisibleBounds()
     {
         //TODO tähän jotkut järkevät boundsit
@@ -68,6 +73,8 @@ public class DataTilemapEditor : Editor
         Tilemap tilemap = dataMap.GetComponent<Tilemap>();
         TileBase[] tiles = tilemap.GetTilesBlock(bounds);
         Handles.color = Color.white;
+        //TODO need some intelligent boundaries where to find data, now they are 0 to 10 for x, and 0 to 10 for y values.
+
         for (int x = 0; x < 10; x++)
         {
             for (int y = 0; y < 10; y++)
@@ -78,6 +85,13 @@ public class DataTilemapEditor : Editor
             }
         }
     }
+    private void DrawRectangle(Rect rect, char code)
+    {
+        if (code == 'X')
+        {
+            Handles.DrawSolidRectangleWithOutline(rect, Color.black, Color.white);
+        }
+    }
     private void DrawDatatileSceneSymbols(Vector2 position,DataEntry dataEntry)
     {
         if (dataEntry == null)
@@ -86,12 +100,11 @@ public class DataTilemapEditor : Editor
         }
         
         Rect[] statusRects = GetStatusRects(position);
-        for (int i = 0; i < statusRects.Length; i++)
+        string code = dataEntry.code;
+        int length = code.Length;
+        for (int i = 0; i < statusRects.Length&&i<length; i++)
         {
-            if (dataEntry.code.Equals("XXXXXXXX"))
-            {
-                Handles.DrawSolidRectangleWithOutline(statusRects[i], Color.white, Color.yellow);
-            }
+            DrawRectangle(statusRects[i],code[i]);
         }
     }
        
