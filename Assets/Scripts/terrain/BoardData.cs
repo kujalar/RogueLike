@@ -9,6 +9,7 @@ public class BoardData : MonoBehaviour {
     public int sizeX;
     public int sizeY;
     public bool allocateOnChange = false;
+    public bool clearDataOnAllocate = false;
     [SerializeField]
     public DataEntry[] dataEntryArray;
 
@@ -25,10 +26,45 @@ public class BoardData : MonoBehaviour {
         if ((sizeX != GetAllocatedX() || sizeY != GetAllocatedY())&&allocateOnChange)
         {
             Debug.Log("Allocating new DataEntries for size "+sizeX+"x"+sizeY);
+
+            DataEntry[] oldData = dataEntryArray;
+            int oldDimX = dimX;
+            int oldDimY = dimY;
+
             dataEntryArray = new DataEntry[sizeX * sizeY];
             dimX = sizeX;
             dimY = sizeY;
+            if (!clearDataOnAllocate)
+            {
+                CopyToDataEntry(oldData, oldDimX, oldDimY);
+            }
         }
+    }
+    //this should copy data from old matrix to new on size changes.
+    private void CopyToDataEntry(DataEntry[] sourceData,int sX, int sY)
+    {
+        int toX = Mathf.Min(sX,dimX);
+        int toY = Mathf.Min(sY, dimY);
+
+        for(int x = 0; x < toX; x++)
+        {
+            for(int y=0; y< toY; y++)
+            {
+                DataEntry entry = sourceData[sX*y+x];
+                string entryStr = "e.code=";
+                if (entry == null)
+                {
+                    entryStr = "null";
+                } else if(entry.code != null)
+                {
+                    entryStr += entry.code;
+                    dataEntryArray[dimX * y + x] = entry;
+                }
+                Debug.Log("(" + x + "," + y + ") = "+entryStr);
+                
+            }
+        }
+
     }
     public int GetAllocatedX()
     {
@@ -100,14 +136,42 @@ public class BoardDataEditor: Editor
     SerializedProperty sizeX;
     SerializedProperty sizeY;
     SerializedProperty allocateOnChange;
+    SerializedProperty clearDataOnAllocate;
+
+    Vector3[] visualisationPoints = new Vector3[8];
 
     void OnEnable()
     {
         sizeX = serializedObject.FindProperty("sizeX");
         sizeY = serializedObject.FindProperty("sizeY");
         allocateOnChange = serializedObject.FindProperty("allocateOnChange");
-    }
+        clearDataOnAllocate = serializedObject.FindProperty("clearDataOnAllocate");
 
+
+    }
+    void OnSceneGUI()
+    {
+        BoardData boardData = target as BoardData;
+        //we want to draw rectangle to board, which shows the area how big our boardData is.
+        float minX = 0-0.5f;
+        float minY = 0-0.5f;
+        float maxX = boardData.dimX - 0.5f;
+        float maxY = boardData.dimY - 0.5f;
+
+        visualisationPoints[0] = new Vector3(minX, minY, 0);
+        visualisationPoints[1] = new Vector3(minX, maxY, 0);
+
+        visualisationPoints[2] = visualisationPoints[0];
+        visualisationPoints[3] = new Vector3(maxX, minY, 0);
+
+        visualisationPoints[4] = new Vector3(maxX, maxY, 0);
+        visualisationPoints[5] = visualisationPoints[1];
+
+        visualisationPoints[6] = visualisationPoints[4];
+        visualisationPoints[7] = visualisationPoints[3];
+
+        Handles.DrawDottedLines(visualisationPoints,10.0f);
+    }
     public override void OnInspectorGUI()
     {
         BoardData boardData = target as BoardData;
@@ -128,6 +192,7 @@ public class BoardDataEditor: Editor
         EditorGUILayout.PropertyField(sizeX);
         EditorGUILayout.PropertyField(sizeY);
         EditorGUILayout.PropertyField(allocateOnChange);
+        EditorGUILayout.PropertyField(clearDataOnAllocate);
         serializedObject.ApplyModifiedProperties();
 
         boardData.initDatastore();

@@ -101,11 +101,15 @@ public class DataTilemapEditor : Editor
         
         Rect[] statusRects = GetStatusRects(position);
         string code = dataEntry.code;
-        int length = code.Length;
-        for (int i = 0; i < statusRects.Length&&i<length; i++)
+        if (code != null)
         {
-            DrawRectangle(statusRects[i],code[i]);
+            int length = code.Length;
+            for (int i = 0; i < statusRects.Length && i < length; i++)
+            {
+                DrawRectangle(statusRects[i], code[i]);
+            }
         }
+        
     }
        
 }
