@@ -1032,8 +1032,10 @@ MonoBehaviour:
   dimY: 4
   sizeX: 4
   sizeY: 4
+  minXY: {x: 0, y: 0}
+  offset: {x: 0, y: 0}
   allocateOnChange: 0
-  clearDataOnChange: 0
+  clearDataOnAllocate: 0
   dataEntryArray:
   - code: ________
   - code: 
@@ -1051,6 +1053,7 @@ MonoBehaviour:
   - code: 
   - code: 
   - code: XXXXXXXX
+  linearOffset: 0
 --- !u!4 &1521879677
 Transform:
   m_ObjectHideFlags: 0
@@ -4701,6 +4704,7 @@ GameObject:
   - component: {fileID: 2013621965}
   - component: {fileID: 2013621964}
   - component: {fileID: 2013621966}
+  - component: {fileID: 2013621967}
   m_Layer: 0
   m_Name: DataTilemap
   m_TagString: Untagged
@@ -4867,7 +4871,91 @@ MonoBehaviour:
   test:
   - ploro
   - ploro2
-  boardData: {fileID: 1521879676}
+--- !u!114 &2013621967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2013621962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: febc13ba22f836344a12172c38a02c36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dimX: 8
+  dimY: 8
+  sizeX: 8
+  sizeY: 8
+  minXY: {x: 0, y: -1}
+  offset: {x: 0, y: -1}
+  allocateOnChange: 1
+  clearDataOnAllocate: 0
+  dataEntryArray:
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: XXXXXXXX
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: XXXXXXXX
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  linearOffset: -8
 --- !u!1 &2114862036
 GameObject:
   m_ObjectHideFlags: 0

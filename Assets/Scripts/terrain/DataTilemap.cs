@@ -8,13 +8,21 @@ public class DataTilemap : MonoBehaviour {
     public string[] test;
     [HideInInspector]
     Tilemap tilemap;
-    [SerializeField]
-    //public DataEntry[,] dataEntries = new DataEntry[1000,1000];
-    public BoardData boardData;
+    private BoardData boardData;
 	// Use this for initialization
 	void Start () {
         tilemap = GetComponent<Tilemap>();
+        //try if this works with local boardData object
+        boardData = GetComponent<BoardData>();
 	}
+    public BoardData GetBoardData()
+    {
+        if (boardData == null)
+        {
+            boardData = GetComponent<BoardData>();
+        }
+        return boardData;
+    }
     public DataTile getDataTileFromWorld(Vector3 worldPoint)
     {
         Vector3Int cell = tilemap.WorldToCell(worldPoint);
@@ -48,6 +56,7 @@ public class DataTilemap : MonoBehaviour {
 public class DataTilemapEditor : Editor
 {
     string code = "12345678";
+    Vector3[] visualisationPoints = new Vector3[8];
 
     private Rect[] GetStatusRects(Vector2 position)
     {
@@ -80,10 +89,38 @@ public class DataTilemapEditor : Editor
             for (int y = 0; y < 10; y++)
             {
                 DataTile dataTile = tilemap.GetTile(new Vector3Int(x,y,0)) as DataTile;
-                DataEntry dataEntry = dataMap.boardData.Read(x,y);//dataMap.dataEntries[x,y];
+                DataEntry dataEntry = dataMap.GetBoardData().Read(x,y);//dataMap.dataEntries[x,y];
                 DrawDatatileSceneSymbols(new Vector2(x,y), dataEntry);
             }
         }
+
+        DrawBoardDataSceneVisualization(dataMap.GetBoardData());
+    }
+    private void DrawBoardDataSceneVisualization(BoardData boardData)
+    {
+        if (boardData == null)
+        {
+            return;
+        }
+        //we want to draw rectangle to board, which shows the area how big our boardData is.
+        float minX = 0 - 0.5f + boardData.minXY.x;
+        float minY = 0 - 0.5f + boardData.minXY.y;
+        float maxX = boardData.dimX - 0.5f + boardData.minXY.x;
+        float maxY = boardData.dimY - 0.5f + boardData.minXY.y;
+
+        visualisationPoints[0] = new Vector3(minX, minY, 0);
+        visualisationPoints[1] = new Vector3(minX, maxY, 0);
+
+        visualisationPoints[2] = visualisationPoints[0];
+        visualisationPoints[3] = new Vector3(maxX, minY, 0);
+
+        visualisationPoints[4] = new Vector3(maxX, maxY, 0);
+        visualisationPoints[5] = visualisationPoints[1];
+
+        visualisationPoints[6] = visualisationPoints[4];
+        visualisationPoints[7] = visualisationPoints[3];
+
+        Handles.DrawDottedLines(visualisationPoints, 10.0f);
     }
     private void DrawRectangle(Rect rect, char code)
     {

@@ -3,18 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+
 public class BoardData : MonoBehaviour {
     public int dimX;
     public int dimY;
     public int sizeX;
     public int sizeY;
+    public Vector2Int minXY;
+    public Vector2Int offset;
     public bool allocateOnChange = false;
     public bool clearDataOnAllocate = false;
     [SerializeField]
     public DataEntry[] dataEntryArray;
 
+    public int linearOffset;
+
     public void initDatastore()
     {
+        //we will do init only if we have allocateOnChange setting true. this means allocation is done if there is change,
+        //it is checked further.
+        if (!allocateOnChange)
+        {
+            return;
+        }
         //this is now initiated to start from zero and continue to maxX or maxY
 
         //do not allocate if the size would be zero or less than zero
@@ -23,34 +34,49 @@ public class BoardData : MonoBehaviour {
             Debug.LogWarning("Cannot allocate dataentries with dimensions less than zero. X="+sizeX+" Y="+sizeY);
             return;
         }
-        if ((sizeX != GetAllocatedX() || sizeY != GetAllocatedY())&&allocateOnChange)
+        if (offset == null)
+        {
+            offset = new Vector2Int(0, 0);
+        }
+
+        if ((sizeX != GetAllocatedX() || sizeY != GetAllocatedY()|| minXY.x!= offset.x || minXY.y != offset.y))
         {
             Debug.Log("Allocating new DataEntries for size "+sizeX+"x"+sizeY);
 
             DataEntry[] oldData = dataEntryArray;
             int oldDimX = dimX;
             int oldDimY = dimY;
+            Vector2Int oldMinXY = minXY;
 
             dataEntryArray = new DataEntry[sizeX * sizeY];
             dimX = sizeX;
             dimY = sizeY;
+            minXY = offset;
+            linearOffset = sizeX * minXY.y + minXY.x;
+
             if (!clearDataOnAllocate)
             {
-                CopyToDataEntry(oldData, oldDimX, oldDimY);
+                CopyToDataEntry(oldData, oldDimX, oldDimY,oldMinXY);
             }
         }
     }
+    
     //this should copy data from old matrix to new on size changes.
-    private void CopyToDataEntry(DataEntry[] sourceData,int sX, int sY)
+    private void CopyToDataEntry(DataEntry[] sourceData,int sX, int sY, Vector2Int sMinXY)
     {
-        int toX = Mathf.Min(sX,dimX);
-        int toY = Mathf.Min(sY, dimY);
+        int fromX =Mathf.Max(sMinXY.x,minXY.x);
+        int fromY =Mathf.Max(sMinXY.y,minXY.y);
 
-        for(int x = 0; x < toX; x++)
+        int toX = Mathf.Min(sX+sMinXY.x, dimX+minXY.x);
+        int toY = Mathf.Min(sY+sMinXY.y, dimY+minXY.y);
+
+        int sLinearOffset = sX * sMinXY.y + sMinXY.x;
+
+        for(int x = fromX; x < toX; x++)
         {
-            for(int y=0; y< toY; y++)
+            for(int y=fromY; y< toY; y++)
             {
-                DataEntry entry = sourceData[sX*y+x];
+                DataEntry entry = sourceData[sX*y+x - sLinearOffset];
                 string entryStr = "e.code=";
                 if (entry == null)
                 {
@@ -58,7 +84,7 @@ public class BoardData : MonoBehaviour {
                 } else if(entry.code != null)
                 {
                     entryStr += entry.code;
-                    dataEntryArray[dimX * y + x] = entry;
+                    dataEntryArray[dimX * y + x - linearOffset] = entry;
                 }
                 Debug.Log("(" + x + "," + y + ") = "+entryStr);
                 
@@ -83,9 +109,33 @@ public class BoardData : MonoBehaviour {
         return dimY;// dataEntries.GetLength(1);
     }
 
+    private int getMinX()
+    {
+        if (minXY != null)
+        {
+            return minXY.x;
+        }
+        return 0;
+    }
+    private int getMinY()
+    {
+        if (minXY != null)
+        {
+            return minXY.y;
+        }
+        return 0;
+    }
+    private int getMaxX()
+    {
+        return GetAllocatedX() + getMinX();
+    }
+    private int getMaxY()
+    {
+        return GetAllocatedY() + getMinY();
+    }
     private bool IsOutOfBounds(int x, int y)
     {
-        return x >= GetAllocatedX() || y >= GetAllocatedY() || x < 0 || y < 0;
+        return x >= getMaxX() || y >= getMaxY() || x < getMinX() || y < getMinY();
     }
 
     public void Write(string code,int x, int y)
@@ -97,7 +147,7 @@ public class BoardData : MonoBehaviour {
             Debug.LogError("Out of bounds Error while writing to ("+x+","+y+"). Cannot write.");
             return;
         }
-        int dataIndex = dimX * y + x;
+        int dataIndex = dimX * y + x - linearOffset;
         if (code == null)
         {
             //code null means erase the data from a position
@@ -118,7 +168,7 @@ public class BoardData : MonoBehaviour {
         {
             return null;
         }
-        int dataIndex = dimX * y + x;
+        int dataIndex = dimX * y + x - linearOffset;
         return dataEntryArray[dataIndex];
     }
 }
@@ -133,15 +183,17 @@ public class DataEntry
 [CanEditMultipleObjects]
 public class BoardDataEditor: Editor
 {
+    SerializedProperty offset;
+
     SerializedProperty sizeX;
     SerializedProperty sizeY;
+   
     SerializedProperty allocateOnChange;
     SerializedProperty clearDataOnAllocate;
 
-    Vector3[] visualisationPoints = new Vector3[8];
-
     void OnEnable()
     {
+        offset = serializedObject.FindProperty("offset");
         sizeX = serializedObject.FindProperty("sizeX");
         sizeY = serializedObject.FindProperty("sizeY");
         allocateOnChange = serializedObject.FindProperty("allocateOnChange");
@@ -149,29 +201,7 @@ public class BoardDataEditor: Editor
 
 
     }
-    void OnSceneGUI()
-    {
-        BoardData boardData = target as BoardData;
-        //we want to draw rectangle to board, which shows the area how big our boardData is.
-        float minX = 0-0.5f;
-        float minY = 0-0.5f;
-        float maxX = boardData.dimX - 0.5f;
-        float maxY = boardData.dimY - 0.5f;
-
-        visualisationPoints[0] = new Vector3(minX, minY, 0);
-        visualisationPoints[1] = new Vector3(minX, maxY, 0);
-
-        visualisationPoints[2] = visualisationPoints[0];
-        visualisationPoints[3] = new Vector3(maxX, minY, 0);
-
-        visualisationPoints[4] = new Vector3(maxX, maxY, 0);
-        visualisationPoints[5] = visualisationPoints[1];
-
-        visualisationPoints[6] = visualisationPoints[4];
-        visualisationPoints[7] = visualisationPoints[3];
-
-        Handles.DrawDottedLines(visualisationPoints,10.0f);
-    }
+    
     public override void OnInspectorGUI()
     {
         BoardData boardData = target as BoardData;
@@ -187,10 +217,13 @@ public class BoardDataEditor: Editor
             maxIndex = "none";
         }
         string label = "Allocated size="+boardData.GetAllocatedX() + "x" + boardData.GetAllocatedY()+" maxIndex="+maxIndex;
+        string label2 = "minXY=(" + boardData.minXY.x + "," + boardData.minXY.y + ") linearOffset=" + boardData.linearOffset;
 
         EditorGUILayout.LabelField(label);
+        EditorGUILayout.LabelField(label2);
         EditorGUILayout.PropertyField(sizeX);
         EditorGUILayout.PropertyField(sizeY);
+        EditorGUILayout.PropertyField(offset);
         EditorGUILayout.PropertyField(allocateOnChange);
         EditorGUILayout.PropertyField(clearDataOnAllocate);
         serializedObject.ApplyModifiedProperties();

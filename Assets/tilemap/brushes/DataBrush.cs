@@ -20,7 +20,7 @@ public class DataBrush : GridBrush
         base.Paint(gridLayout, brushTarget, position);
         Debug.Log("CellCount=" + cellCount + " We would paint " + brushTarget.name + " with " + wallCode + " if we would gridLayout=" + gridLayout.name + " brushTarget=" + brushTarget.name);
         //some testing
-        dataTilemap.boardData.Write(wallCode,position.x,position.y);
+        dataTilemap.GetBoardData().Write(wallCode,position.x,position.y);
     }
 #if UNITY_EDITOR
         [MenuItem("Assets/Create/Brushes/Data Brush")]
