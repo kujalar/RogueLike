@@ -102,7 +102,7 @@ public class Creature : MovingObject, ActorObject, ISelectHandler //, Creature
 	//this is used to command the Creature to Move one square
 	public void MoveCommand(int xDir, int yDir){
 		//we have chosen some action, it means, after an action we check if fight begins
-		AttemptMove<Wall>(xDir, yDir);
+		AttemptMove<Wall>(xDir, yDir,freeMove);
 
 		//check fight conditions, now they are pretty straightforward. we just fight if there are enemies on the board.
 		//aim of this is, that unless there is a fight going on, the player can move freely as fast as his speed allows.
@@ -119,10 +119,12 @@ public class Creature : MovingObject, ActorObject, ISelectHandler //, Creature
 		Speed currentSpeed = speedometer.GetSpeed (currentSpeedType);
 		return currentSpeed;
 	}
-
-    protected override void AttemptMove<T>(int xDir, int yDir)
+    //here we have a code smell, freeMove is both class variable and declared parameter variable, but it was because of overridings
+    //You could clean it when you get it work first.
+    protected override void AttemptMove<T>(int xDir, int yDir, bool freeMove)
     {
-        food--;
+        //I removed this simple loose food thing because it was annoying when testing and everything.
+        //food--;
         foodText.text = "Food:" + food;
 
         //base.AttemptMove<T>(xDir, yDir);
@@ -132,7 +134,7 @@ public class Creature : MovingObject, ActorObject, ISelectHandler //, Creature
         //TODO you should make also freeMove mode where speedometer will not count current move, but instead it will count how fast player moves 1 block.
         //TODO diagonal movement
         //TODO difficult terrain
-        if(Move(xDir,yDir,speedometer,out hit))
+        if(Move(xDir,yDir,speedometer,out hit,freeMove))
         {
             SoundManager.instance.RandomizeSfx(moveSound1, moveSound2);
         } else if(hit.transform != null)

@@ -45,7 +45,7 @@ public class Enemy : MovingObject, ActorObject
     }
 
 
-    protected override void AttemptMove<T>(int xDir, int yDir)
+    protected override void AttemptMove<T>(int xDir, int yDir,bool freeMove)
     {
         if (skipMove)
         {
@@ -53,7 +53,7 @@ public class Enemy : MovingObject, ActorObject
             return;
         }
 
-        base.AttemptMove<T>(xDir, yDir);
+        base.AttemptMove<T>(xDir, yDir,freeMove);
 
         //TODO remove and change this skip move, because with a new movement system this is obsolete way.
         //skipMove = true;
@@ -70,7 +70,8 @@ public class Enemy : MovingObject, ActorObject
         { //otherwise move right or left
             xDir = target.position.x > transform.position.x ? 1 : -1;
         }
-        AttemptMove<Creature>(xDir, yDir);
+        //enemies are now always in freeMove false, remember though that I have not made a single enemy with speedometer! This is possible problem and coding thing you should consider!
+        AttemptMove<Creature>(xDir, yDir,false);
     }
 
     protected override void OnCantMove<T>(T component)

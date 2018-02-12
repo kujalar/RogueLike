@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114961150257262344}
   - component: {fileID: 114546420078649982}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: ClassicRogueTutorialGameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,6 +53,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61b8b7bf89019c74f83073874eb0dbf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turnDelay: 0.1
 --- !u!114 &114556038098329614
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -65,10 +66,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelStartDelay: 2
-  turnDelay: 0.1
+  levelImage: {fileID: 0}
   boardScript: {fileID: 0}
   playerFoodPoints: 100
-  playersTurn: 1
   initiativeTrack: {fileID: 0}
 --- !u!114 &114961150257262344
 MonoBehaviour:

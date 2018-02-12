@@ -84,9 +84,23 @@ public class DataTilemapEditor : Editor
         Handles.color = Color.white;
         //TODO need some intelligent boundaries where to find data, now they are 0 to 10 for x, and 0 to 10 for y values.
 
-        for (int x = 0; x < 10; x++)
+        BoardData boardData = dataMap.GetBoardData();
+        int minX = 0;
+        int maxX = 0;
+        int minY = 0;
+        int maxY = 0;
+        if (boardData != null)
         {
-            for (int y = 0; y < 10; y++)
+            minX = boardData.getMinX();
+            maxX = boardData.getMaxX();
+            minY = boardData.getMinY();
+            maxY = boardData.getMaxY();
+        }
+
+
+        for (int x = minX; x < maxX; x++)
+        {
+            for (int y = minY; y < maxY; y++)
             {
                 DataTile dataTile = tilemap.GetTile(new Vector3Int(x,y,0)) as DataTile;
                 DataEntry dataEntry = dataMap.GetBoardData().Read(x,y);//dataMap.dataEntries[x,y];

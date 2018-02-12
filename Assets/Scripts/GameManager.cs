@@ -92,10 +92,12 @@ public class GameManager : MonoBehaviour {
         //wait the delay and invoke method after that.
         Invoke("HideLevelImage", levelStartDelay);
         initiativeTrack.Clear();
-       // enemies.Clear();
-        //TODO we must get number of enemies, so that they can be added to the initiativeTrack
-        boardScript.SetupScene(level);
-
+        
+        //boardScript is only used for rogueLikeTutorial gameboard. With premade levels we do not use it.
+        if (boardScript != null)
+        {
+            boardScript.SetupScene(level);
+        }
         //Experimenting with this system... looks like I'm going to use ObjectData to store my stats that I wish to follow on UI Canvas
         ObjectData<int> intData = new ObjectData<int>();
         intData.setData(1);

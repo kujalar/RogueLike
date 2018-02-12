@@ -998,6 +998,12 @@ Prefab:
       propertyPath: levelImage
       value: 
       objectReference: {fileID: 258926184}
+    - target: {fileID: 114957140965653000, guid: 0837b032c7e63e14793e0ec8a0d8586d,
+        type: 2}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1881618954884008, guid: 338d1e8093b9ef24c92372dd19e57242,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0837b032c7e63e14793e0ec8a0d8586d, type: 2}
   m_IsPrefabParent: 0
@@ -3436,6 +3442,11 @@ Prefab:
       propertyPath: foodText
       value: 
       objectReference: {fileID: 621279732}
+    - target: {fileID: 114597150788426082, guid: 475dbb0baaf940d40a24adc86df3bbff,
+        type: 2}
+      propertyPath: moveTime
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 475dbb0baaf940d40a24adc86df3bbff, type: 2}
   m_IsPrefabParent: 0
@@ -4882,15 +4893,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: febc13ba22f836344a12172c38a02c36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dimX: 8
-  dimY: 8
-  sizeX: 8
-  sizeY: 8
-  minXY: {x: 0, y: -1}
-  offset: {x: 0, y: -1}
+  dimX: 20
+  dimY: 12
+  sizeX: 20
+  sizeY: 12
+  minXY: {x: -8, y: -3}
+  offset: {x: -8, y: -3}
   allocateOnChange: 1
   clearDataOnAllocate: 0
   dataEntryArray:
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: 
   - code: 
   - code: 
   - code: 
@@ -4908,6 +4941,11 @@ MonoBehaviour:
   - code: 
   - code: 
   - code: 
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: 
+  - code: 
+  - code: 
   - code: 
   - code: XXXXXXXX
   - code: XXXXXXXX
@@ -4917,6 +4955,63 @@ MonoBehaviour:
   - code: 
   - code: 
   - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: XXXXXXXX
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: XXXXXXXX
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: 
+  - code: XXXXXXXX
+  - code: 
+  - code: 
+  - code: XXXXXXXX
+  - code: 
+  - code: XXXXXXXX
+  - code: 
+  - code: 
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: 
+  - code: 
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: 
+  - code: 
   - code: XXXXXXXX
   - code: XXXXXXXX
   - code: 
@@ -4927,6 +5022,87 @@ MonoBehaviour:
   - code: 
   - code: 
   - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: 
+  - code: XXXXXXXX
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: XXXXXXXX
+  - code: 
+  - code: 
+  - code: 
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: XXXXXXXX
+  - code: 
+  - code: XXXXXXXX
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: XXXXXXXX
+  - code: 
+  - code: XXXXXXXX
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: XXXXXXXX
+  - code: 
+  - code: XXXXXXXX
+  - code: ______XX
+  - code: _XX_X_XX
+  - code: _XX_____
+  - code: 
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: 
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: X_______
+  - code: 
+  - code: 
+  - code: 
+  - code: XXXXXXXX
+  - code: 
+  - code: 
+  - code: 
+  - code: 
+  - code: XXXXXXXX
+  - code: XXXXXXXX
   - code: 
   - code: 
   - code: 
@@ -4945,17 +5121,28 @@ MonoBehaviour:
   - code: 
   - code: 
   - code: 
-  - code: 
-  - code: 
-  - code: 
-  - code: 
-  - code: 
-  - code: 
-  - code: 
-  - code: 
-  - code: 
-  - code: 
-  linearOffset: -8
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  - code: XXXXXXXX
+  linearOffset: -68
 --- !u!1 &2114862036
 GameObject:
   m_ObjectHideFlags: 0

@@ -75,6 +75,12 @@ public class Speed
     public int dashValue;
     public int currentDashValue;
 
+    //tell's us the 'maxSpeed' which is same as baseSpeed + dashValue where dashValue can be 0 or bigger.
+    public int GetCurrentMaxSpeed()
+    {
+        return baseSpeed + dashValue;
+    }
+
     //tell's us how much move is left when summing baseSpeed and optional dashValue (dashing)
     public int GetMoveLeft()
     {

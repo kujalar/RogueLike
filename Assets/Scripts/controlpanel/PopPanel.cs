@@ -25,12 +25,12 @@ public class PopPanel : MonoBehaviour {
     }
     public void StartListenMouse()
     {
-        Debug.Log("Start Listen Mouse");
+        //Debug.Log("Start Listen Mouse");
         listenMouse = true;
     }
     public void StopListeningMouse()
     {
-        Debug.Log("Stop Listen Mouse");
+        //Debug.Log("Stop Listen Mouse");
         listenMouse = false;
     }
 }

@@ -109,7 +109,7 @@ public class BoardData : MonoBehaviour {
         return dimY;// dataEntries.GetLength(1);
     }
 
-    private int getMinX()
+    public int getMinX()
     {
         if (minXY != null)
         {
@@ -117,7 +117,7 @@ public class BoardData : MonoBehaviour {
         }
         return 0;
     }
-    private int getMinY()
+    public int getMinY()
     {
         if (minXY != null)
         {
@@ -125,11 +125,11 @@ public class BoardData : MonoBehaviour {
         }
         return 0;
     }
-    private int getMaxX()
+    public int getMaxX()
     {
         return GetAllocatedX() + getMinX();
     }
-    private int getMaxY()
+    public int getMaxY()
     {
         return GetAllocatedY() + getMinY();
     }
