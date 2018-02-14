@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour {
 
     private Text levelText;
 
-    private int level = 3;
+    private int level = 1;
  //   private List<Enemy> enemies;
     private bool enemiesMoving;
 
@@ -29,12 +29,14 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
+        Debug.Log("*** "+this.name + " is awake");
         if (instance == null)
         {
             instance = this;
             //SceneManager.sceneLoaded += OnSceneLoaded;
         } else if(instance != this)
         {
+            Debug.Log("We destroy excess GameManager");
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
@@ -45,7 +47,19 @@ public class GameManager : MonoBehaviour {
 	}
     private void Start()
     {
-        InitGame();
+        Loader loader = FindObjectOfType<Loader>();
+        InitGame(loader);
+    }
+
+    //use this to set next level when initiating rogueLike board
+    public void SetLevel(int lvl)
+    {
+        level = lvl;
+    }
+    //use this when changing roguelike level
+    public void AddToLevel(int change)
+    {
+        level += change;
     }
 
     //this is called only once, and the paramter tell it to be called only after the scene was loaded
@@ -60,8 +74,9 @@ public class GameManager : MonoBehaviour {
     //This is called each time a scene is loaded.
     static private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
-        instance.level++;
-        instance.InitGame();
+        
+        Loader loader = FindObjectOfType<Loader>();
+        instance.InitGame(loader);
     }
 	public void setSelectedCreature(Creature creature){
         //some experimenting with the EventSystem
@@ -78,9 +93,11 @@ public class GameManager : MonoBehaviour {
 		return selectedCreature;
 	}
     //here we are going to setup the level
-    void InitGame()
+    void InitGame(Loader loader)
     {
         doingSetup = true;
+
+        boardScript = loader.boardManager;
 
         //we find images like this, because they are instantiated on level load. cant put in editor.
         //levelImage = GameObject.Find("LevelImage");
@@ -103,6 +120,9 @@ public class GameManager : MonoBehaviour {
         intData.setData(1);
         Debug.Log("objectData = "+intData.data);
     }
+    
+
+
     private void HideLevelImage()
     {
         levelImage.SetActive(false);

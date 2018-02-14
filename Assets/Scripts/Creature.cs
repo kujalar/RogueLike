@@ -179,6 +179,13 @@ public class Creature : MovingObject, ActorObject, ISelectHandler //, Creature
     {
         if(other.tag == "Exit")
         {
+            RogueStair rogueStair = other.gameObject.GetComponent<RogueStair>();
+            int change = 1;
+            if (rogueStair != null)
+            {
+                change = rogueStair.direction;
+            }
+            GameManager.instance.AddToLevel(change);
             Invoke("Restart", restartLevelDelay);
             enabled = false;
         } else if(other.tag == "Food")
@@ -193,6 +200,14 @@ public class Creature : MovingObject, ActorObject, ISelectHandler //, Creature
             SoundManager.instance.RandomizeSfx(drinkSound1, drinkSound2);
             foodText.text = "+" + pointsPerSoda + " Food:" + food;
             other.gameObject.SetActive(false);
+        } else if(other.tag == "ScenePortal")
+        {
+            //we have hit a ScenePortal trigger. oh my! If we are a player we will change scene.
+            if (this.tag == "Player")
+            {
+                ScenePortal scenePortal = other.gameObject.GetComponent<ScenePortal>();
+                scenePortal.ActivatePortal(this);
+            }
         }
     }
 

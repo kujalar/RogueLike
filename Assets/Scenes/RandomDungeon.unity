@@ -163,6 +163,11 @@ Prefab:
       propertyPath: levelImage
       value: 
       objectReference: {fileID: 1009185130}
+    - target: {fileID: 114957140965653000, guid: 0837b032c7e63e14793e0ec8a0d8586d,
+        type: 2}
+      propertyPath: boardManager
+      value: 
+      objectReference: {fileID: 1374549224}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0837b032c7e63e14793e0ec8a0d8586d, type: 2}
   m_IsPrefabParent: 0
@@ -328,6 +333,85 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 711cfd0c5e4743c4cacd074d3dc09fd1, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1374549223
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1374549225}
+  - component: {fileID: 1374549224}
+  m_Layer: 0
+  m_Name: BoardManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1374549224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1374549223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fdaa34e6638815488ddbfc11f891ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  columns: 12
+  rows: 8
+  wallCount:
+    minimum: 5
+    maximum: 9
+  foodCount:
+    minimum: 1
+    maximum: 5
+  exit: {fileID: 1941049834611786, guid: 3cf2acbde0cf9e842aa27b5a8469ef2f, type: 2}
+  outToMain: {fileID: 1026604949663120, guid: ef8c23386281bd44e96fad88ceecbcac, type: 2}
+  back: {fileID: 1334776160076542, guid: 39b6a3329ea3f474ebcd9c236d7e9f71, type: 2}
+  floorTiles:
+  - {fileID: 1927466597968986, guid: ca1c71a5932b1f1499dea5b09d6f9d07, type: 2}
+  - {fileID: 1245698662376540, guid: 02df7cd6694262d4dba2c357692946b9, type: 2}
+  - {fileID: 1646764831542690, guid: d19f31549f58e7b459d30b7a51f8674d, type: 2}
+  - {fileID: 1900693690711352, guid: 7ba33eb05d62fb541a88579feb6a9e67, type: 2}
+  - {fileID: 1357728973233886, guid: bacf694fe0f5b124c9ddecc45f9a9e36, type: 2}
+  - {fileID: 1567846141869062, guid: 49f497f7024bf2849818ae0b0026ba5d, type: 2}
+  - {fileID: 1022443542108908, guid: 0278682f83aed164e9c88998711200c5, type: 2}
+  - {fileID: 1078075298840996, guid: 608fcf63b30063047a31780a386d0dd8, type: 2}
+  wallTiles:
+  - {fileID: 1143307369177258, guid: 051b55809acf2604b840211ddf6f3944, type: 2}
+  - {fileID: 1757756907746746, guid: 72ef0efbaeec49f40a856cfbc85ba778, type: 2}
+  - {fileID: 1865805839239296, guid: fd0f147171be2a84689d7f6baf23a05c, type: 2}
+  - {fileID: 1628094965546200, guid: c1e4b646e22edec46bba8fda013f2970, type: 2}
+  - {fileID: 1506388696337798, guid: 41813931ce92bb04ca040ee412024640, type: 2}
+  - {fileID: 1149514910263934, guid: 3d4b1976e33b91249b17d7ea9e9a0cb1, type: 2}
+  - {fileID: 1466202308145768, guid: 573202d335c204349a9f2fa8045dff43, type: 2}
+  - {fileID: 1082404079226606, guid: 993423beab438b7469b160a7e5b909de, type: 2}
+  foodTiles:
+  - {fileID: 1757902165744134, guid: 0189bce5b08e2db439896c09585da6b6, type: 2}
+  - {fileID: 1420660786160112, guid: fba111371a5d6c54d89b249eed746acf, type: 2}
+  enemyTiles:
+  - {fileID: 1478421136465778, guid: 373c12f06a3c914458f07f8dc88a13ad, type: 2}
+  - {fileID: 1586406396138570, guid: cfee94069be1a1244bd8f83c1f69c2c3, type: 2}
+  outerWallTiles:
+  - {fileID: 1821832412384890, guid: ccd6c506b0b3b304996163ad2aff720f, type: 2}
+  - {fileID: 1048784799312114, guid: 4381c984040f1424da39a1a34ae9796f, type: 2}
+  - {fileID: 1356658918246870, guid: 33975d3481d582a4f9a24f9b272eaf7a, type: 2}
+--- !u!4 &1374549225
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1374549223}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.973359, y: 2.4350927, z: 0.023612283}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1960117769
 Prefab:
   m_ObjectHideFlags: 0
@@ -383,7 +467,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4557479388718012, guid: 475dbb0baaf940d40a24adc86df3bbff, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4557479388718012, guid: 475dbb0baaf940d40a24adc86df3bbff, type: 2}
       propertyPath: m_LocalPosition.z
@@ -419,6 +503,11 @@ Prefab:
       propertyPath: controller
       value: 
       objectReference: {fileID: 647833395}
+    - target: {fileID: 1171450434060858, guid: 475dbb0baaf940d40a24adc86df3bbff, type: 2}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 6926474624037801865, guid: 0000000000000000d000000000000000,
+        type: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 475dbb0baaf940d40a24adc86df3bbff, type: 2}
   m_IsPrefabParent: 0

@@ -23,6 +23,8 @@ public class BoardManager : MonoBehaviour {
     public Count wallCount = new Count(5, 9);
     public Count foodCount = new Count(1, 5);
     public GameObject exit;
+    public GameObject outToMain;
+    public GameObject back;
     public GameObject[] floorTiles;
     public GameObject[] wallTiles;
     public GameObject[] foodTiles;
@@ -90,7 +92,16 @@ public class BoardManager : MonoBehaviour {
         LayoutObjectAtRandom(foodTiles, foodCount.minimum, foodCount.maximum);
         int enemyCount = (int)Mathf.Log(level, 2f);
         LayoutObjectAtRandom(enemyTiles, enemyCount, enemyCount);
+        //instantiate door down
         Instantiate(exit, new Vector3(columns - 1, rows - 1, 0F), Quaternion.identity);
+        //instantiate door up
+        if (level == 1)
+        {
+            Instantiate(outToMain, new Vector3(0F, 0F, 0F), Quaternion.identity);
+        } else
+        {
+            Instantiate(back, new Vector3(0F,0F,0F), Quaternion.identity);
+        }
     }
 
 	// Use this for initialization
