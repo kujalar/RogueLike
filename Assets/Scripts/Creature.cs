@@ -70,7 +70,13 @@ public class Creature : MovingObject, ActorObject, ISelectHandler //, Creature
 
         gameEvents = GameEvents.instance;
         //TODO we should place the player, who is currentSelectedPlayer
+        //TODO this part must not be done if we are not a player
         GameManager.instance.setSelectedCreature (this);
+        //we must also place him into spawn location
+        Vector3 spawnPosition = GameManager.instance.playerSpawnPoint.GetLocation();
+        if (spawnPosition != null) {
+            this.transform.position = spawnPosition;
+        }
 	}
 
     protected void StartFight()
@@ -179,11 +185,20 @@ public class Creature : MovingObject, ActorObject, ISelectHandler //, Creature
     {
         if(other.tag == "Exit")
         {
+            //this is logic that holds with BoardManagers RogueDungeon... ascend and descend is always in same place...
             RogueStair rogueStair = other.gameObject.GetComponent<RogueStair>();
             int change = 1;
             if (rogueStair != null)
             {
                 change = rogueStair.direction;
+                if (change == -1)
+                {
+                    Vector3 descPosition = GameManager.instance.boardScript.instantiateDescendPosition();
+                    GameManager.instance.playerSpawnPoint.SetLocation(new Vector2(descPosition.x,descPosition.y-1));
+                } else
+                {
+                    GameManager.instance.playerSpawnPoint.SetLocation(new Vector2(0f,1f));
+                }
             }
             GameManager.instance.AddToLevel(change);
             Invoke("Restart", restartLevelDelay);

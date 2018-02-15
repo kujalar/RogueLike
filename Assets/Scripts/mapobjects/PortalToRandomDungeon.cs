@@ -18,14 +18,17 @@ public class PortalToRandomDungeon : ScenePortal
 
 public abstract class ScenePortal : MonoBehaviour {
     public string toScene;
-	
+    public Vector2Int spawnPoint;
+
     //this method is called when configured ScenePortal is activated
     public virtual void ActivatePortal(Creature activator)
     {
+        GameManager.instance.playerSpawnPoint.SetLocation(spawnPoint);
         //how to change scene? now just make it static
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
         SceneManager.LoadScene(toScene);
         //SceneManager.LoadScene(target.buildIndex, LoadSceneMode.Single);
+        
     }
 }
 

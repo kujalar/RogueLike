@@ -39,14 +39,19 @@ public abstract class MovingObject : MonoBehaviour {
         }
         int moveCost = TerrainChart.instance.GetCostToEnter(data,xDir,yDir,distance,SpeedType.LAND);
 
-        //in freeMoveMode we do not pay movement allowance in movepoints but in time, and for that we need effective speed compared to terrain
-        float effectiveMoveSpeed = speedometer.GetSpeed(SpeedType.LAND).GetCurrentMaxSpeed() / ( moveTime * moveCost );  
-        Debug.Log("effectiveMoveSpeed = " + effectiveMoveSpeed);
+        //some default
+        float effectiveMoveSpeed = 1;
+
         
+
         //if we have speedometer, we should take the terrain and reduce the speed as we now have no terrain
         //and we always move only 1 move we reduce the distance of one square and it means speed of 5
         if (speedometer != null && moveCost >= 0)
         {
+            //in freeMoveMode we do not pay movement allowance in movepoints but in time, and for that we need effective speed compared to terrain
+            effectiveMoveSpeed = speedometer.GetSpeed(SpeedType.LAND).GetCurrentMaxSpeed() / (moveTime * moveCost);
+            Debug.Log("effectiveMoveSpeed = " + effectiveMoveSpeed);
+
             //we pay the cost in movementpoints if we are not in freeMoveMode
             if (!freeMoveMode)
             {

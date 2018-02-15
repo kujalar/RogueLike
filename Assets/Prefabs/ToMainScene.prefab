@@ -79,6 +79,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toScene: Main
+  spawnPoint: {x: 1, y: 4}
+  level: 0
 --- !u!212 &212878347739343424
 SpriteRenderer:
   m_ObjectHideFlags: 1

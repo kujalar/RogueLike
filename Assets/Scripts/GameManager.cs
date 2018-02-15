@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour {
     private Text levelText;
 
     private int level = 1;
+    [HideInInspector]
+    public SpawnPoint playerSpawnPoint = new SpawnPoint();
  //   private List<Enemy> enemies;
     private bool enemiesMoving;
 
@@ -50,6 +52,8 @@ public class GameManager : MonoBehaviour {
         Loader loader = FindObjectOfType<Loader>();
         InitGame(loader);
     }
+
+    //TODO make some portalEntity that can be removed after use.
 
     //use this to set next level when initiating rogueLike board
     public void SetLevel(int lvl)
@@ -176,4 +180,18 @@ public class GameManager : MonoBehaviour {
     }
     */
 
+}
+
+public class SpawnPoint
+{
+    Vector3 location;
+
+    public void SetLocation(Vector2 location)
+    {
+        this.location = new Vector3(location.x,location.y,0f);
+    }
+    public Vector3 GetLocation()
+    {
+        return location;
+    }
 }

@@ -83,7 +83,10 @@ public class BoardManager : MonoBehaviour {
             Instantiate(tileChoice, randomPosition, Quaternion.identity);
         }
     }
-
+    public Vector3 instantiateDescendPosition()
+    {
+        return new Vector3(columns-1,rows-1,0F);
+    }
     public void SetupScene(int level)
     {
         BoardSetup();
@@ -93,7 +96,7 @@ public class BoardManager : MonoBehaviour {
         int enemyCount = (int)Mathf.Log(level, 2f);
         LayoutObjectAtRandom(enemyTiles, enemyCount, enemyCount);
         //instantiate door down
-        Instantiate(exit, new Vector3(columns - 1, rows - 1, 0F), Quaternion.identity);
+        Instantiate(exit, instantiateDescendPosition(), Quaternion.identity);
         //instantiate door up
         if (level == 1)
         {
